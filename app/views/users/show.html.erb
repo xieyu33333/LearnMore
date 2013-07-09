@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>用户名:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>我下载的:</b>
+  <% @user.download.each do |downlaod| %>
+    <%= download.studyfile.name%>
+  <% end%>
+</p>
+
+<p>
+  <b>我收藏的资料:</b>
+  <% @user.faverate.each do |faverate| %>
+  <%= faverate.studyfile.name%>
+  
+</p>
+<p>
+  <b>我收藏的博客:</b>
+  <%= faverate.blog.name%>
+</p>
+<% end%>
+
+<p>
+  <b>累积积分:</b>
+  <%= @user.all_point %>
+</p>
+
+<p>
+  <b>剩余积分:</b>
+  <%= @user.point %>
+</p>
+
+<p>
+  <b>累计消费:</b>
+  <%= @user.cost %>
+</p>
+
+<%= link_to '返 回', users_path %>

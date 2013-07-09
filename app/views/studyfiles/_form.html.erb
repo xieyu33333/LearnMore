@@ -1,0 +1,49 @@
+<%= form_for(@studyfile, :html => {:multipart => true}) do |f| %>
+  <% if @studyfile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@studyfile.errors.count, "error") %> prohibited this studyfile from being saved:</h2>
+
+      <ul>
+      <% @studyfile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label '重命名' %><br />
+    <%= f.text_field :filename, :id => 'file_name'%>
+  </div>
+
+  <div class="controls">
+    <%= f.label '文档类型' %><br />
+    <label class="radio">
+      <%= f.radio_button :filetype, "0" %> 分类1
+    </label>
+    <label class="radio">
+      <%= f.radio_button :filetype, "1" %> 分类2
+    </label>
+    <label class="radio">
+      <%= f.radio_button :filetype, "2" %> 分类3
+    </label>
+    <label class="radio">
+      <%= f.radio_button :filetype, "3" %> 分类4
+    </label>
+  </div>
+
+  <div class="field">
+    <%= f.label '下载分数'%><br />
+    <%= f.text_field :point %>
+  </div>
+
+  <p>
+    <label>上传</label>
+    <%= f.file_field :file_url, :id => 'file_uploader' %>
+  </p>
+
+
+  <div class="actions">
+    <%= f.submit '提 交'%>
+  </div>
+<% end %>

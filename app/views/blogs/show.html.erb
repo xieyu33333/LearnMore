@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <b>标题:</b>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <b>作者:</b>
+  <%= @blog.user.username %>
+</p>
+
+<p>
+  <b>正文:</b>
+  <%= sanitize @blog.artical %>
+</p>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>

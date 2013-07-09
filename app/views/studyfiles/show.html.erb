@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>文件名:</b>
+  <%= @studyfile.filename %>
+</p>
+
+<p>
+  <b>文件类型:</b>
+  <%= file_type2name(@studyfile.filetype) %>
+</p>
+
+<p>
+  <b>下载次数:</b>
+  <%= @studyfile.download_count %>
+</p>
+
+<p>
+  <b>喜欢次数:</b>
+  <%= @studyfile.faverate_count %>
+</p>
+
+<p>
+  <b>文件url:</b>
+  <%= APP_CONFIG['main_domain']+@studyfile.file_url.to_s %>
+</p>
+
+<p>
+  <b>上传者:</b>
+  <%= @studyfile.user.username %>
+</p>
+
+<p>
+  <b>分数:</b>
+  <%= @studyfile.point %>
+</p>
+
+
+<%= link_to 'Edit', edit_studyfile_path(@studyfile) %> |
+<%= link_to 'Back', studyfiles_path %>

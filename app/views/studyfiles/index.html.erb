@@ -1,0 +1,30 @@
+
+  <h3>文件管理</h3>
+
+  <table class="table">
+    <tr>
+      <th>文件名</th>
+      <th>文件类型</th>
+      <th>下载次数</th>
+      <th>喜欢次数</th>
+      <th>上传者</th>
+      <th>分数</th>
+      <th></th>
+    </tr>
+
+  <% @studyfiles.each do |studyfile| %>
+    <tr>
+      <td><%= link_to studyfile.filename, studyfile %></td>
+      <td><%= file_type2name(studyfile.filetype) %></td>
+      <td><%= studyfile.download_count %></td>
+      <td><%= studyfile.faverate_count %></td>
+      <td><%= studyfile.user.username %></td>
+      <td><%= studyfile.point %></td>
+      <td><%= link_to '编辑', edit_studyfile_path(studyfile) %> | <%= link_to '删除', studyfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <%= link_to '后台编辑上传', new_studyfile_path %>

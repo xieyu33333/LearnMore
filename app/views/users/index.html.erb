@@ -1,0 +1,23 @@
+<h3>用户管理</h3>
+
+  <table class="table">
+    <tr>
+      <th>用户名</th>
+      <th>电子邮箱</th>
+      <th>现有积分</th>
+      <th>总积分</th>
+      <th>累计消费</th>
+      <th></th>
+    </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.username, user %></td>
+      <td><%= user.email %></td>
+      <td><%= user.point %></td>
+      <td><%= user.all_point %></td>
+      <td><%= user.cost %></td>
+      <td><%= link_to '删除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
