@@ -8,6 +8,10 @@ DataDownload::Application.routes.draw do
 
   resources :studyfiles
 
+  resources :faverates
+      
+  resources :downloads
+
   resources :users do
       resources :downloads
       resources :faverates
@@ -17,8 +21,12 @@ DataDownload::Application.routes.draw do
         get "search"
       end
     end
+  
+  get "/homes/index"
+  root :to => 'homes#index'
 
-  root :to => 'studyfiles#index'
+  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
