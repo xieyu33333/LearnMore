@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class="page-header">全部评论列表</h1>
+	<table class="table">
+  	  <tr>
+		  <th style="width:4%">id</th>  
+    	  <th style="width:60%">评论内容</th>
+		  <th style="width:20%">评论者名称</th>
+    	  <th style="text-align:center">操 作</th>
+  	  </tr>
+	  <% @comments.each do |comment| %>
+  	  <tr>
+		  <td><%= comment.id %></td>
+    	  <td><%= comment.comment %></td>
+		  <td><%= link_to comment.user.username, comment.user %></td>
+		  <td style="text-align:center"><%= link_to '详情', comment %> | <%= link_to '删除', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+	  <% end %>
+	</table><br />
+</div>

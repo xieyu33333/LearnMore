@@ -1,6 +1,14 @@
 DataDownload::Application.routes.draw do
 
-  resources :blogs
+  resources :comments do
+    collection do
+      post "create_blog_comment"
+    end
+  end
+
+  resources :blogs do
+    resources :comments
+  end
   
   devise_for :admins
 
@@ -15,19 +23,19 @@ DataDownload::Application.routes.draw do
   
   resources :faverates
       
-  resources :downloads
+  resources :downloads 
 
   resources :users do
       resources :downloads
       resources :faverates
       resources :studyfiles
+      resources :comments
       resources :blogs
       collection do
         get "search"
       end
     end
   
-  #get "/studyfiles/:id/download", :to => 'studyfiles#download'
   get "/homes/index"
   root :to => 'homes#index'
 

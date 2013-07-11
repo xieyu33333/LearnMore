@@ -1,23 +1,44 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <b>标题:</b>
-  <%= @blog.title %>
-</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DataDownload</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "/homes/header_show"%>
+    <div class="container">
+			<p id="notice"><%= notice %></p>
+			  <h2><%= @blog.title %></h2>
 
-<p>
-  <b>作者:</b>
-  <%= @blog.user.username %>
-</p>
+			<p>
+			  <b>作者:</b>
+			  <%= @blog.user.username %>
+			</p>
 
-<p>
-  <b>访问计数:</b>
-  <%= @blog.hit %>
-</p>
+			<p>
+			  <b>访问计数:</b>
+			  <%= @blog.hit %>
+			</p>
 
-<p>
-  <b>正文:</b>
-  <%= sanitize @blog.artical %>
-</p>
+			<p>
+			  <b>正文:</b>
+			  <%= sanitize @blog.artical %>
+			</p>
 
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+			<%= link_to 'Edit', edit_blog_path(@blog) %> |
+			<%= link_to 'Back', blogs_path %>
+			<% if @comments%>
+				<% @comments.each do |comment|%>
+					<p><%= sanitize comment.comment %></p>
+				<% end %>
+			<% end %>
+			<%= form_tag("/comments/create_blog_comment", :method => "post") do %>
+			  <textarea id="comment" name="comment[comment]"></textarea>
+			  <input id="blog_id" name="id" type="hidden" value=<%= @blog.id%>>
+				<%= submit_tag%>
+			<% end %>
+		</div> 
+	</body>
+</html>

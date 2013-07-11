@@ -7,6 +7,8 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @blog.increment!(:hit)
+    @comments = @blog.comments
+    render :layout => false
   end
 
   def new

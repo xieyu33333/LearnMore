@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :studyfile
   has_many :download
   has_many :faverate
+  has_many :comment
   attr_accessor :login
   # attr_accessible :title, :body
   def self.find_first_by_auth_conditions(warden_conditions)

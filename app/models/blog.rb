@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
-  attr_accessible :artical, :title, :user_id, :blogtype, :hit
+  attr_accessible :artical, :title, :user_id, :blogtype, :hit, :comment
+
   belongs_to :user
   has_many :faverates
 

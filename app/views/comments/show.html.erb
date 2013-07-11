@@ -1,0 +1,9 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+	<table class="table">
+		<tr><th style="width:33%">评论者id</th><td><%= @comment.user.id %></td></tr>
+		<tr><th>评论者姓名</th><td><%= @comment.user.username %></td></tr>
+		<tr><th>评论内容</th><td><%= @comment.comment %></td></tr>
+	</table>
+<%= link_to '返回评论列表', comments_path %>
+</div>
