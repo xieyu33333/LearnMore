@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710064846) do
+ActiveRecord::Schema.define(:version => 20130711054607) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -36,11 +36,26 @@ ActiveRecord::Schema.define(:version => 20130710064846) do
     t.text     "artical"
     t.integer  "user_id"
     t.string   "title",           :limit => 100
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.integer  "faverates_count"
     t.integer  "blogtype"
+    t.integer  "hit",                            :default => 0
   end
+
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "downloads", :force => true do |t|
     t.integer  "user_id"

@@ -15,6 +15,8 @@
     <%= f.text_field :title %>
   </div>
 
+  <%= select(:blog, :blogtype, options_for_select([['视角', 0], ['辟谣', 1], ['观点', 2], ['书评与影评', 3] ])) %>
+
   <div class="field">
     <%= f.label :artical %><br />
     <%= f.kindeditor :artical , :class=>"blog_content" , :allowFileManager => false , :editor_id => 'my_editor' %>

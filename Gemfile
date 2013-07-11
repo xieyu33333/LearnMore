@@ -79,3 +79,4 @@ gem 'uuidtools'
 gem "omniauth", "~> 1.0.1"
 gem 'redcarpet'
 gem 'coderay'
+gem 'acts_as_commentable', '~> 3.0.1'

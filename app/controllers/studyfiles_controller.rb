@@ -3,33 +3,18 @@ class StudyfilesController < ApplicationController
   # GET /studyfiles.json
   def index
     @studyfiles = Studyfile.page params[:page]
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @studyfiles }
-    end
   end
 
   # GET /studyfiles/1
   # GET /studyfiles/1.json
   def show
     @studyfile = Studyfile.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @studyfile }
-    end
   end
 
   # GET /studyfiles/new
   # GET /studyfiles/new.json
   def new
     @studyfile = Studyfile.new
-    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @studyfile }
-    end
   end
 
   # GET /studyfiles/1/edit
@@ -42,15 +27,10 @@ class StudyfilesController < ApplicationController
   def create
     @studyfile = Studyfile.new(params[:studyfile])
     @studyfile.user_id = current_user.id
-
-    respond_to do |format|
-      if @studyfile.save
-        format.html { redirect_to @studyfile, notice: 'Studyfile was successfully created.' }
-        format.json { render json: @studyfile, status: :created, location: @studyfile }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @studyfile.errors, status: :unprocessable_entity }
-      end
+    if @studyfile.save
+      redirect_to @studyfile, notice: 'Studyfile was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -77,10 +57,12 @@ class StudyfilesController < ApplicationController
     file = Rails.public_path + @studyfile.file_url.to_s
     File.delete(file) if File.exist?(file)
     @studyfile.destroy
+    redirect_to studyfiles_url
+  end
 
-    respond_to do |format|
-      format.html { redirect_to studyfiles_url }
-      format.json { head :no_content }
-    end
+  def download
+    @studyfile = Studyfile.find(params[:id])
+    send_file Rails.public_path+@studyfile.file_url.to_s,
+              filename: "#{@studyfile.filename}"
   end
 end

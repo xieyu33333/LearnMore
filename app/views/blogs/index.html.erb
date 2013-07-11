@@ -4,6 +4,8 @@
   <tr>
     <th>标题</th>
     <th>作者</th>
+    <th>喜欢</th>
+    <th>访问计数</th>
     <th>发布时间</th>
     <th></th>
   </tr>
@@ -11,7 +13,9 @@
 <% @blogs.each do |blog| %>
   <tr>
     <td><%= link_to blog.title, blog %></td>
-    <td><%= blog.user.username %></td>    
+    <td><%= blog.user.username %></td>
+    <td></td>
+    <td><%= blog.hit%></td>    
     <td><%= blog.created_at %></td>
     <td><%= link_to '编辑', edit_blog_path(blog) %> | <%= link_to '删除', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

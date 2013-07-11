@@ -6,8 +6,13 @@ DataDownload::Application.routes.draw do
 
   devise_for :users
 
-  resources :studyfiles
+  resources :studyfiles do
+    collection do
+      get ":id/download", :to => 'studyfiles#download'
+    end
+  end
 
+  
   resources :faverates
       
   resources :downloads
@@ -22,6 +27,7 @@ DataDownload::Application.routes.draw do
       end
     end
   
+  #get "/studyfiles/:id/download", :to => 'studyfiles#download'
   get "/homes/index"
   root :to => 'homes#index'
 
