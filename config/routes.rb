@@ -36,7 +36,10 @@ DataDownload::Application.routes.draw do
       end
     end
   
+  delete "/faverates/delete", :to => 'faverates#destroy'
   get "/homes/index"
+  get "/homes/all_data"
+  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
   root :to => 'homes#index'
 
   

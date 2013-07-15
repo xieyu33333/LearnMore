@@ -1,3 +1,52 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.blog_left{
+	padding-top: 60px;
+}
+
+.blog_comment{
+	height:90px;
+	margin:20px 0 20px 0;
+}
+
+.comment_box{
+	width:650px;
+	min-height: 60px;
+	margin-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #666;
+}
+
+.blog_controller{
+	float: right;
+}
+
+.blog_reply_link{
+	background: url("small.png");
+	background-position: 0 -132px;
+	height:12px;
+	width:12px;
+	display: inline-block;
+}
+
+.blog_buttom{
+	height:20px;
+	padding-top: 10px;
+}
+
+.blog_like_link{
+	background: url("small.png");
+	background-position: 0 -84px;
+	height:12px;
+	width:12px;
+	display: inline-block;
+}
+
+.blog_dislike_link{
+	background: url("small.png");
+	background-position: 0 -96px;
+	height:12px;
+	width:12px;
+	display: inline-block;
+}

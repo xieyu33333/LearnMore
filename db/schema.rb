@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711054607) do
+ActiveRecord::Schema.define(:version => 20130712093719) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130711054607) do
     t.string   "title",           :limit => 100
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
-    t.integer  "faverates_count"
+    t.integer  "faverates_count",                :default => 0
     t.integer  "blogtype"
     t.integer  "hit",                            :default => 0
   end

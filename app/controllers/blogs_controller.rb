@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_filter :authenticate_user!, only: [:index, :destroy, :edit]
 
   def index
     @blogs = Blog.page params[:page]
@@ -7,6 +8,13 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @blog.increment!(:hit)
+    gon.blog_id = @blog.id
+    if current_user && Faverate.where(:user_id => current_user.id, :blog_id => @blog.id).first
+      @faverate = Faverate.where(:user_id => current_user.id, :blog_id => @blog.id).first.id
+    else
+      @faverate = nil
+    end
+    gon.watch.faverate_id = @faverate
     @comments = @blog.comments
     render :layout => false
   end

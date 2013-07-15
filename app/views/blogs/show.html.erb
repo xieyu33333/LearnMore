@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>DataDownload</title>
+    <%= include_gon %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -9,36 +10,62 @@
   <body>
     <%= render "/homes/header_show"%>
     <div class="container">
-			<p id="notice"><%= notice %></p>
-			  <h2><%= @blog.title %></h2>
+    	<div class = "span3 blog_left">
+    		<%= @blog.created_at %>
+    		<p>
+				  <b>访问计数:</b>
+				  <%= @blog.hit %>
+				</p>
+				<p>
+				  <b>喜欢计数:</b>
+				  <b class="like_count"><%= @blog.faverates_count %></b>
+				</p>
+    	</div>
+	    <div class="span8">
+				<p id="notice"><%= notice %></p>
+				  <h2 class = "center"><%= @blog.title %></h2>
 
-			<p>
-			  <b>作者:</b>
-			  <%= @blog.user.username %>
-			</p>
+				<p>
+				  <%= @blog.user.username %>
+				  <% if current_user && current_user.id == @blog.user.id %>
+				    <%= link_to '编 辑', edit_blog_path(@blog) %>
+				  <% end %>
+				</p>
 
-			<p>
-			  <b>访问计数:</b>
-			  <%= @blog.hit %>
-			</p>
+				<p>
+				  <%= sanitize @blog.artical %>
+				</p>
+				<div class="blog_buttom">
+					<div class="blog_controller">
+						<% if current_user && current_user.faverate.include?(Faverate.find_by_blog_id(@blog.id))%>
+						  <a class="blog_like blog_dislike_link">
+						  	<div class="blog_like_ctrl"></div>
+						  </a>
+						<% else %>
+						  <a class="blog_like blog_like_link">
+							  <div class="blog_like_ctrl"></div>
+						  </a>
+						<% end %>
 
-			<p>
-			  <b>正文:</b>
-			  <%= sanitize @blog.artical %>
-			</p>
-
-			<%= link_to 'Edit', edit_blog_path(@blog) %> |
-			<%= link_to 'Back', blogs_path %>
-			<% if @comments%>
-				<% @comments.each do |comment|%>
-					<p><%= sanitize comment.comment %></p>
+						<a href="#comment_section", class="blog_reply_link"></a>
+					</div>
+				</div>
+				<% if @comments%>
+					<% @comments.each do |comment|%>
+					  <div class='comment_box'>
+					  	<%= image_tag "http://tp4.sinaimg.cn/1355610915/50/5665911088/1", :class => "span1"%>
+						  <p class="span6"><%= sanitize comment.comment %></p>
+					  </div>
+					<% end %>
 				<% end %>
-			<% end %>
-			<%= form_tag("/comments/create_blog_comment", :method => "post") do %>
-			  <textarea id="comment" name="comment[comment]"></textarea>
-			  <input id="blog_id" name="id" type="hidden" value=<%= @blog.id%>>
-				<%= submit_tag%>
-			<% end %>
+				<section id="comment_section">
+					<%= form_tag("/comments/create_blog_comment", :method => "post") do %>
+					  <textarea id="comment" class="span6 blog_comment" name="comment[comment]"></textarea>
+					  <input id="blog_id" name="id" type="hidden" value=<%= @blog.id%>></br>
+						<%= submit_tag "发表评论", :class => "btn btn-primary"%>
+					<% end %>
+			  </section>
+			</div>
 		</div> 
 	</body>
 </html>

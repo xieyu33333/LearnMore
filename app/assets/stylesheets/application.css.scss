@@ -10,8 +10,15 @@
  *
  *= require_self
  *= require_tree .
+ *= require markitup/skins/markitup/style
+ *= require markitup/sets/xbbcode/style
  */
+ 
 @import "bootstrap";
+
+body{
+	color: #666;
+}
 
 .notice{
 	display:none;
@@ -42,4 +49,10 @@
 	margin-top:10px;
 	padding-bottom: 15px;
 	border-bottom: 1px black dashed;
+}
+
+.blog_like_ctrl{
+	position: absolute;
+	height:12px;
+	width:12px;
 }

@@ -1,29 +1,22 @@
 class StudyfilesController < ApplicationController
-  # GET /studyfiles
-  # GET /studyfiles.json
+  before_filter :authenticate_user!, only: [:index, :destroy]
+
   def index
     @studyfiles = Studyfile.page params[:page]
   end
 
-  # GET /studyfiles/1
-  # GET /studyfiles/1.json
   def show
     @studyfile = Studyfile.find(params[:id])
   end
 
-  # GET /studyfiles/new
-  # GET /studyfiles/new.json
   def new
     @studyfile = Studyfile.new
   end
 
-  # GET /studyfiles/1/edit
   def edit
     @studyfile = Studyfile.find(params[:id])
   end
 
-  # POST /studyfiles
-  # POST /studyfiles.json
   def create
     @studyfile = Studyfile.new(params[:studyfile])
     @studyfile.user_id = current_user.id
@@ -34,8 +27,6 @@ class StudyfilesController < ApplicationController
     end
   end
 
-  # PUT /studyfiles/1
-  # PUT /studyfiles/1.json
   def update
     @studyfile = Studyfile.find(params[:id])
 
@@ -50,8 +41,6 @@ class StudyfilesController < ApplicationController
     end
   end
 
-  # DELETE /studyfiles/1
-  # DELETE /studyfiles/1.json
   def destroy
     @studyfile = Studyfile.find(params[:id])
     file = Rails.public_path + @studyfile.file_url.to_s
