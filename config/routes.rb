@@ -1,5 +1,11 @@
 DataDownload::Application.routes.draw do
 
+  resources :topics
+
+
+  resources :forums
+
+
   resources :comments do
     collection do
       post "create_blog_comment"

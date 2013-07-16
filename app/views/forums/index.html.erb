@@ -1,0 +1,31 @@
+<h3>版块管理</h3>
+
+<table class="table">
+  <tr>
+    <th>版块名称</th>
+    <th>Urlname</th>
+    <th>描述</th>
+    <th>版规</th>
+    <th>父节点</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forums.each do |forum| %>
+  <tr>
+    <td><%= forum.name %></td>
+    <td><%= forum.urlname %></td>
+    <td><%= forum.description %></td>
+    <td><%= forum.rule %></td>
+    <td><%= forum.parent_id %></td>
+    <td><%= link_to 'Show', forum %></td>
+    <td><%= link_to 'Edit', edit_forum_path(forum) %></td>
+    <td><%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新建版块', new_forum_path %>

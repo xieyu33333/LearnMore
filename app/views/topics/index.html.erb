@@ -1,0 +1,28 @@
+<h3>主帖审核</h3>
+
+<table class="table">
+  <tr>
+    <th>标题</th>
+    <th>内容</th>
+    <th>作者</th>
+    <th>所属版块</th>
+    <th>状态</th>
+    <th>喜欢数</th>
+    <th></th>
+  </tr>
+
+<% @topics.each do |topic| %>
+  <tr>
+    <td><%= link_to topic.name, topic %></td>
+    <td><%= topic.content %></td>
+    <td><%= topic.user_id %></td>
+    <td><%= topic.forum_id %></td>
+    <td><%= topic.status %></td>
+    <td><%= topic.digg %></td>
+    <td><%= link_to '编辑', edit_topic_path(topic) %> | <%= link_to '删除', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

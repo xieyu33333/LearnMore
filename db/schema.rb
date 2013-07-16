@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712093719) do
+ActiveRecord::Schema.define(:version => 20130716014715) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -72,6 +72,16 @@ ActiveRecord::Schema.define(:version => 20130712093719) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "forums", :force => true do |t|
+    t.string   "name"
+    t.string   "urlname"
+    t.text     "description"
+    t.text     "rule"
+    t.integer  "parent_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "pictures", :force => true do |t|
     t.string   "name"
     t.integer  "imageable_id"
@@ -88,6 +98,17 @@ ActiveRecord::Schema.define(:version => 20130712093719) do
     t.string   "file_url"
     t.integer  "user_id",                                     :null => false
     t.integer  "point",                        :default => 0, :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+  end
+
+  create_table "topics", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "forum_id",        :limit => 2, :default => 0, :null => false
+    t.integer  "status",          :limit => 1, :default => 0, :null => false
+    t.integer  "faverates_count"
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
   end

@@ -3,4 +3,5 @@ class Faverate < ActiveRecord::Base
   belongs_to :user
   belongs_to :studyfile, :counter_cache => true
   belongs_to :blog, :counter_cache => true
+  belongs_to :topic, :counter_cache => true
 end
