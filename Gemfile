@@ -64,8 +64,8 @@ gem 'grape'
 gem 'grape-entity'
 gem 'cancan'
 # gem 'dalli', '~> 2.3.0'
-# gem 'hiredis'
-# gem "redis", :require => ["redis", "redis/connection/hiredis"]
+gem 'hiredis'
+gem "redis", :require => ["redis", "redis/connection/hiredis"]
 gem 'bcrypt-ruby'
 gem 'unicorn'
 gem 'kaminari'
