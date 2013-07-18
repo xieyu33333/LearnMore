@@ -1,4 +1,8 @@
 <h4>注册会员数</h4>
+<%= $redis.get :users_count %>
 <h4>博客总数</h4>
+<%= $redis.get :blogs_count %>
 <h4>评论总数</h4>
+<%= $redis.get :comments_count %>
+
 <h4>点击量最多的文章</h4>

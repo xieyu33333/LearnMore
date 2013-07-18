@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :faverate
   has_many :comment
   has_many :topic
+
   attr_accessor :login
   # attr_accessible :title, :body
   def self.find_first_by_auth_conditions(warden_conditions)
@@ -23,4 +24,5 @@ class User < ActiveRecord::Base
 	    where(conditions).first
 	  end
   end
+  
 end

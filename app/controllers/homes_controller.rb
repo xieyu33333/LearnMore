@@ -5,8 +5,7 @@ class HomesController < ApplicationController
   	render :layout => false
   end
 
-  def rank
+  def all_data
 
-  	#@blog_rank = $redis.zrevrank("highscores", self.id) + 1
   end
 end
