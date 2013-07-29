@@ -63,7 +63,9 @@ gem 'mysql2'
 gem 'grape'
 gem 'grape-entity'
 gem 'cancan'
-# gem 'dalli', '~> 2.3.0'
+gem 'cache_digests'
+gem 'dalli', '~> 2.3.0'
+gem 'second_level_cache', "~> 1.6", :git => 'git://github.com/csdn-dev/second_level_cache.git'
 gem 'hiredis'
 gem "redis", :require => ["redis", "redis/connection/hiredis"]
 gem 'bcrypt-ruby'
@@ -84,3 +86,4 @@ gem "markitup-rails"
 gem 'gon'
 #gem 'whenever'
 gem 'rufus-scheduler'   #计划任务
+#gem 'cologger'

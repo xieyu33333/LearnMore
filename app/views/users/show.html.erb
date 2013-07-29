@@ -14,20 +14,22 @@
   <b>我下载的:</b>
   <% @user.download.each do |downlaod| %>
     <%= download.studyfile.name%>
-  <% end%>
+  <% end %>
 </p>
 
 <p>
-  <b>我收藏的资料:</b>
+  <b>我收藏的资料:</b></br>
   <% @user.faverate.each do |faverate| %>
-  <%= faverate.studyfile.name%>
-  
+    <%= faverate.studyfile.filename if faverate.studyfile%>
+  <% end%>
 </p>
 <p>
-  <b>我收藏的博客:</b>
-  <%= faverate.blog.name%>
+  <b>我收藏的博客:</b></br>
+  <% @user.faverate.each do |faverate| %>
+    <%= link_to faverate.blog.title, faverate.blog if faverate.blog %></br>
+  <% end%>
 </p>
-<% end%>
+
 
 <p>
   <b>累积积分:</b>

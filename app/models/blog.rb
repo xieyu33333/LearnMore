@@ -5,4 +5,14 @@ class Blog < ActiveRecord::Base
   has_many :faverates
 
   acts_as_commentable
+  acts_as_cached
+
+  def scored
+    score = self.hit
+    $redis.zadd("hit", score, self.id)
+  end
+
+  def rank_by_hit
+    $redis.zrevrank("hit", self.id) + 1
+  end
 end

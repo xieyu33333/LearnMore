@@ -11,3 +11,9 @@ scheduler.every '10m' do
   blogs_count = Blog.count
   $redis.set(:blogs_count, blogs_count)
 end
+
+scheduler.every '1h' do
+	Blog.all.each do |blog|
+		blog.scored
+	end
+end

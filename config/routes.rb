@@ -1,10 +1,6 @@
 DataDownload::Application.routes.draw do
 
-  resources :topics
-
-
-  resources :forums
-
+  resources :topics, :only => [:new, :create, :update, :show, :edit]
 
   resources :comments do
     collection do
@@ -47,6 +43,15 @@ DataDownload::Application.routes.draw do
   get "/homes/all_data"
   mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
   root :to => 'homes#index'
+
+  namespace :admin do
+    resources :users, :only => [:index, :destroy]
+    resources :blogs, :only => [:index, :destroy]
+    resources :studyfiles, :only => [:index, :destroy]
+    resources :topics, :only => [:index, :destroy]
+    resources :comments, :only => [:index, :destroy]
+    resources :forums
+  end
 
   
 

@@ -1,0 +1,25 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <div style="float:left">
+        <a class="brand" href="/homes/index">Brand</a>
+        <ul class="nav">
+          <li class="active"><a href="/homes/index">首页</a></li>
+          <li><a href="/forums">论坛</a></li>
+          <% if current_user && current_user.admin? %>
+            <li><a href="/admin/studyfiles">后台管理</a></li>
+          <% end %>
+       </ul>
+      </div> 
+      <div style="float:right">
+        <form class="navbar-search">
+          <% if current_user%>
+            <a href="#"><%= current_user.username%></a> | <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
+          <% else%>
+            <%= link_to('登录', new_user_session_path)  %> | <a href="#">注册</a>
+          <% end%>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

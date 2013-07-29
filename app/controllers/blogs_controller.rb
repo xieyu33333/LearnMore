@@ -1,9 +1,4 @@
 class BlogsController < ApplicationController
-  before_filter :authenticate_user!, only: [:index, :destroy, :edit]
-
-  def index
-    @blogs = Blog.page params[:page]
-  end
 
   def show
     @blog = Blog.find(params[:id])
@@ -16,7 +11,6 @@ class BlogsController < ApplicationController
     end
     gon.watch.faverate_id = @faverate
     @comments = @blog.comments
-    render :layout => false
   end
 
   def new
@@ -30,6 +24,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(params[:blog])
     @blog.user_id = current_user.id
+    @blog.scored
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
     else

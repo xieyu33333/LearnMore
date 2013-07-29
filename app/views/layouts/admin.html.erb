@@ -7,11 +7,12 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-  <body id="<%= @body_id %>">
-    <%= render "layouts/header"%>
+  <body>
+    <%= render 'layouts/header_admin'%>
+    <%= render 'layouts/left_admin'%>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <div class="home_container">
+    <div class="span11">
       <%= yield %>
     </div>
   </body>

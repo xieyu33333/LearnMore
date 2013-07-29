@@ -1,9 +1,4 @@
 class StudyfilesController < ApplicationController
-  before_filter :authenticate_user!, only: [:index, :destroy]
-
-  def index
-    @studyfiles = Studyfile.page params[:page]
-  end
 
   def show
     @studyfile = Studyfile.find(params[:id])
