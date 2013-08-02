@@ -29,7 +29,7 @@ body{
 }
 
 .home_container{
-	width:1100px;
+	width:1250px;
 	margin:auto;
 }
 
@@ -56,4 +56,14 @@ body{
 	height:12px;
 	width:12px;
 	cursor:pointer;
+}
+
+.red_head{
+	color: #d64;
+	font-weight: 500;
+	font-family: "Lato", 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'Helvetica Neue', "aria";
+}
+
+li {
+	list-style:none;
 }

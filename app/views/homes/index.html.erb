@@ -1,8 +1,8 @@
 <div class = "home_container">
 	<div class = "span3 bordered">
-		<h3>文章列表</h3>
+		<h3 class = "red_head">文章列表</h3>
 	  <% @blog_classify.each do |classify| %>
-	    <h4><%= blog_type2name classify %></h4>
+	    <h4 class = "red_head"><%= blog_type2name classify %></h4>
 	    <% @blog.each do |blog|%>
 	      <% if blog[:blogtype] == classify %>
 	        <li><%= link_to blog.title, blog %></li>
@@ -11,19 +11,19 @@
     <% end%>
 	</div>
 
-	<div class = "span7 bordered">
+	<div class = "span9 bordered">
 		<% Blog.all.each do |blog|%>
 	  	<div class = "artical_block">
-	  		<h4><%= blog.title %></h4>
+	  		<h3><%= link_to blog.title, blog, :class => 'red_head' %></h3>
 	  		<%= sanitize blog.artical %>
 	  	</div>
 	  	<% end %>
 	</div>
 
 	<div class = "span3 bordered">
-		<h3>资料列表</h3>
+		<h3 class = "red_head">资料列表</h3>
 		<% @file_classify.each do |classify| %>
-		<h4><%= file_type2name(classify) %></h4>
+		<h4 class = "red_head"><%= file_type2name(classify) %></h4>
 	  	<% @file.each do |topic|%>
 	  	  <% if topic[:filetype] == classify %>
 	  		  <li><%= link_to topic.filename, "/studyfiles/#{topic.id}/download" %></li>
