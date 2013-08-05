@@ -15,12 +15,12 @@
   <% @studyfiles.each do |studyfile| %>
     <tr>
       <td><%= link_to studyfile.filename, studyfile %></td>
-      <td><%= file_type2name(studyfile.filetype) %></td>
+      <td><%= studyfile.filetype %></td>
       <td><%= studyfile.downloads_count %></td>
       <td><%= studyfile.faverates_count %></td>
       <td><%= studyfile.user.username %></td>
       <td><%= studyfile.point %></td>
-      <td><%= link_to '编辑', edit_studyfile_path(studyfile) %> | <%= link_to '删除', studyfile, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to '喜欢', faverates_path(:studyfile => studyfile), :method => :post  %></td>
+      <td><%= link_to '编辑', edit_studyfile_path(studyfile) %> | <%= link_to '删除', studyfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </table>

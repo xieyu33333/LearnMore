@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716014715) do
+ActiveRecord::Schema.define(:version => 20130805034803) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(:version => 20130716014715) do
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
     t.integer  "faverates_count",                :default => 0
-    t.integer  "blogtype"
+    t.string   "blogtype"
     t.integer  "hit",                            :default => 0
+    t.integer  "section_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -90,16 +91,27 @@ ActiveRecord::Schema.define(:version => 20130716014715) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "sections", :force => true do |t|
+    t.string   "name",         :null => false
+    t.integer  "studyfile_id"
+    t.integer  "blog_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.text     "description"
+  end
+
   create_table "studyfiles", :force => true do |t|
     t.string   "filename"
-    t.integer  "filetype",        :limit => 1, :default => 0, :null => false
-    t.integer  "downloads_count",              :default => 0, :null => false
-    t.integer  "faverates_count",              :default => 0, :null => false
+    t.string   "filetype",        :default => "0", :null => false
+    t.integer  "downloads_count", :default => 0,   :null => false
+    t.integer  "faverates_count", :default => 0,   :null => false
     t.string   "file_url"
-    t.integer  "user_id",                                     :null => false
-    t.integer  "point",                        :default => 0, :null => false
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+    t.integer  "user_id",                          :null => false
+    t.integer  "point",           :default => 0,   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "section_id"
   end
 
   create_table "topics", :force => true do |t|
@@ -131,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20130716014715) do
     t.integer  "point",                                                 :default => 10
     t.decimal  "cost",                   :precision => 10, :scale => 0, :default => 0
     t.integer  "all_point",                                             :default => 10
+    t.integer  "section_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

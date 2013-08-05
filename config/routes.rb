@@ -22,6 +22,12 @@ DataDownload::Application.routes.draw do
     end
   end
 
+  resources :sections do
+    resources :blogs
+    resources :studyfiles
+    resources :users
+  end
+
   
   resources :faverates
       
@@ -51,6 +57,7 @@ DataDownload::Application.routes.draw do
     resources :topics, :only => [:index, :destroy]
     resources :comments, :only => [:index, :destroy]
     resources :forums
+    resources :sections
   end
 
   

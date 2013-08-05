@@ -1,0 +1,11 @@
+<div class = "home_container">
+<% @sections.each do |section| %>
+  <div class = "section_block">
+   <img src = 'http://www.bootcss.com/assets/img/uisdc.com.png'/></br>
+    <%=link_to section.name, section, :class => 'section_link'%>
+    <%= section.description %>
+  </div>
+<% end %>
+</div>
+
+
