@@ -72,6 +72,7 @@ GEM
       activesupport (>= 3.2.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
+    chunky_png (1.2.8)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -80,6 +81,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     daemons (1.1.9)
     dalli (2.3.0)
     descendants_tracker (0.0.1)
@@ -101,6 +108,7 @@ GEM
     fastercsv (1.5.5)
     ffi (1.9.0)
     formatador (0.2.4)
+    fssm (0.2.10)
     gon (4.1.1)
       actionpack (>= 2.3.0)
       json
@@ -306,6 +314,7 @@ DEPENDENCIES
   carrierwave
   coderay
   coffee-rails (~> 3.2.1)
+  compass-rails (~> 1.0.3)
   dalli (~> 2.3.0)
   devise
   factory_girl_rails

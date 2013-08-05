@@ -18,16 +18,19 @@ class BlogsController < ApplicationController
 
   def new
     @blog = Blog.new
+    @type_arr = Blog.where(:section_id => params[:section_id]).pluck(:blogtype).uniq.map{|type| [type, type]}
   end
 
   def edit
     @blog = Blog.find(params[:id])
+    @type_arr = Blog.where(:section_id => params[:section_id]).pluck(:blogtype).uniq.map{|type| [type, type]}
   end
 
   def create
     @blog = Blog.new(params[:blog])
     @blog.user_id = current_user.id
     @blog.scored
+    @type_arr = Blog.where(:section_id => params[:section_id]).pluck(:blogtype).uniq.map{|type| [type, type]}
     if @blog.save
       redirect_to @blog, notice: 'Blog was successfully created.'
     else

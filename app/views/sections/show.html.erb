@@ -1,21 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class = "home_container">
+  <div class = "span3 bordered">
+    <h3 class = "red_head">文章列表</h3>
+    <% if @blog_classify %>
+      <% @blog_classify.each do |classify| %>
+        <h4 class = "red_head"><%= classify %></h4>
+        <% @blog.each do |blog|%>
+          <% if blog[:blogtype] == classify %>
+            <li><%= link_to blog.title, blog %></li>
+          <% end%>
+        <% end%>
+      <% end%>
+    <% end%>
+  </div>
 
-<p>
-  <b>Name:</b>
-  <%= @section.name %>
-</p>
+  <div class = "span9 bordered">
+    <% @section.blogs.each do |blog|%>
+      <div class = "artical_block">
+        <h3><%= link_to blog.title, blog, :class => 'red_head' %></h3>
+        <%= sanitize blog.artical %>
+      </div>
+      <% end %>
+  </div>
 
-
-
-<p>
-  <b>Description:</b>
-  <%= @section.description %>
-</p>
-
-  <%= @section.blogs %>
-  <%= @section.studyfiles %>
-
-
-
-<%= link_to 'Edit', edit_section_path(@section) %> |
-<%= link_to 'Back', sections_path %>
+  <div class = "span3 bordered">
+    <h3 class = "red_head">资料列表</h3>
+    <% if @file_classify %>
+      <% @file_classify.each do |classify| %>
+      <h4 class = "red_head"><%= classify %></h4>
+        <% @file.each do |topic|%>
+          <% if topic[:filetype] == classify %>
+            <li><%= link_to topic.filename, "/studyfiles/#{topic.id}/download" %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

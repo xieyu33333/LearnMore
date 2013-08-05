@@ -48,7 +48,7 @@ DataDownload::Application.routes.draw do
   get "/homes/index"
   get "/homes/all_data"
   mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
-  root :to => 'homes#index'
+  root :to => 'sections#index'
 
   namespace :admin do
     resources :users, :only => [:index, :destroy]

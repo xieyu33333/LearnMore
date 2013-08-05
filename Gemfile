@@ -12,7 +12,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'jquery-rails'
   gem 'bootstrap-sass'
-
+  gem "compass-rails", "~> 1.0.3"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 

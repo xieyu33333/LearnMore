@@ -75,6 +75,8 @@ li {
 	float:left;
 	border: 1px solid #666;
 	margin:30px;
+	@include border-radius(10px);
+	@include box-shadow(#666 2px 2px 10px);
 }
 
 .section_link{

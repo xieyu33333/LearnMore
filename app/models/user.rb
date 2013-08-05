@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :faverate
   has_many :comment
   has_many :topic
+  belongs_to :user
 
   attr_accessor :login
   # attr_accessible :title, :body

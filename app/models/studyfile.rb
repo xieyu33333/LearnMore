@@ -3,4 +3,5 @@ class Studyfile < ActiveRecord::Base
   mount_uploader :file_url, DatafileUploader
   belongs_to :user
   has_many :faverates
+  belongs_to :user
 end

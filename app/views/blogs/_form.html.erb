@@ -15,7 +15,10 @@
     <%= f.text_field :title %>
   </div>
 
-  <%= select(:blog, :blogtype, options_for_select([['视角', 0], ['辟谣', 1], ['观点', 2], ['书评与影评', 3] ])) %>
+  <!--<%= select(:blog, :blogtype, options_for_select(@type_arr)) %>-->
+
+  <p>添加分类</p>
+  <%= f.text_field :blogtype %>
 
   <div class="field">
     <%= f.label :artical %><br />
