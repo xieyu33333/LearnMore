@@ -10,6 +10,7 @@ class SectionsController < ApplicationController
     @blog_classify = @section.blogs.pluck(:blogtype).uniq
     @blog = @section.blogs
     @file = @section.studyfiles
+    @user = @section.users.pluck(:id)
   end
 end
 

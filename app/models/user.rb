@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :comment
   has_many :topic
   belongs_to :user
+  has_one :picture, as: :imageable
 
   attr_accessor :login
   # attr_accessible :title, :body
@@ -24,6 +25,15 @@ class User < ActiveRecord::Base
 	  else
 	    where(conditions).first
 	  end
+  end
+
+  def add_picture(pictures)
+    pictures.each do |pic|
+      picture = Picture.new
+      picture.name = pic
+      picture.save!
+      self.picture = picture
+    end
   end
   
 end

@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  attr_accessible :artical, :title, :user_id, :blogtype, :hit, :comment
+  attr_accessible :artical, :title, :user_id, :blogtype, :hit, :comment, :section_id
 
   belongs_to :user
   belongs_to :section

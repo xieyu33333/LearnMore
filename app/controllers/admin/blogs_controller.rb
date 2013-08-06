@@ -8,4 +8,8 @@ class Admin::BlogsController < Admin::BaseController
     @blog.destroy
     redirect_to blogs_url
   end
+
+  def edit
+    @blog = Blog.find(params[:id])
+  end
 end

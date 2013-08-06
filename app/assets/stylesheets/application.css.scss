@@ -20,6 +20,20 @@ body{
 	color: #666;
 }
 
+#notice {
+  color: green;
+  padding:5px;
+  //background: #72CA72;
+  @include border-radius(5px);
+}
+
+#error {
+  color: red;
+  padding:5px;
+  //background: #E99E9E;
+  @include border-radius(5px);
+}
+
 .notice{
 	display:none;
 }
@@ -84,4 +98,14 @@ li {
 	line-height: 2em;
 	text-align: center;
 	display: block;
+}
+
+
+.header-inner{
+	background-color: #563d7c; 
+	min-height:40px;
+}
+
+.newblog{
+	margin: 25px 0 20px 60px;
 }

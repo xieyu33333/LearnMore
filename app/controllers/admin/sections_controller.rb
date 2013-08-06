@@ -26,8 +26,12 @@ class Admin::SectionsController < Admin::BaseController
 
   def update
     @section = Section.find(params[:id])
-    if @section.update_attributes(params[:section])
-      redirect_to @section, notice: 'Section was successfully updated.'
+    @section.update_attributes(params[:section])
+    if !params[:sectionLogo].nil?
+      @section.add_picture(params[:sectionLogo])
+    end
+    if @section.save
+      redirect_to [:admin, @section], notice: 'Section was successfully updated.'
     else
       render action: "edit"
     end

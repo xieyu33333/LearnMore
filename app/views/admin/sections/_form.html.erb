@@ -1,4 +1,4 @@
-<%= form_for(@section) do |f| %>
+<%= form_for([:admin, @section], :html => {:multipart => true}) do |f| %>
   <% if @section.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@section.errors.count, "error") %> prohibited this section from being saved:</h2>
@@ -15,6 +15,9 @@
     <%= f.label '版块名称：' %><br />
     <%= f.text_field :name %>
   </div>
+
+  <p>版块图片</p>
+  <input id = "picture_uploader" type="file" name="sectionLogo[]" />
 
   <div class="field">
     <%= f.label '版块介绍：' %><br />

@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   def index
-    @blogs = Blog.page params[:page]
+    @blogs = Blog.find_all_by_section_id(params[:section_id])
   end
 
   def show

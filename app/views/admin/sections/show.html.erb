@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag @section.picture %>
+<% if @section.picture %>
+<%= image_tag @section.picture.image_url %>
+<% end %>
 <p>
   <b>Name:</b>
   <%= @section.name %>
@@ -10,7 +12,5 @@
   <%= @section.description %>
 </p>
 
-
-
-<%= link_to 'Edit', edit_admin_section_path(@forum) %> |
+<%= link_to 'Edit', edit_admin_section_path(@section) %> |
 <%= link_to 'Back', admin_sections_path %>

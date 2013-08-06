@@ -1,23 +1,22 @@
-<div class="navbar">
+<div class="navbar navbar-inverse">
 	<div class="navbar-inner">
 	  <div class="container">
 	  	<div style="float:left">
-	    	<a class="brand" href="/admin/blogs">后台管理</a>
+	    	<a class="brand" href="/admin/blogs">View-Learn后台管理</a>
 	     	<ul class="nav">
-	      	<li class="active"><a href="/sections">首页</a></li>
 	      	<li><a href="#">今日数据</a></li>
 	      	<li><a href="/homes/all_data">总数据</a></li>
 	     </ul>
 	  	</div> 
 	    <div style="float:right">
-	      <form class="navbar-search">
-	  			<input type="text" class="search-query" placeholder="Search">
-	  			<% if current_user%>
-			  		<a href="#"><%= current_user.username%></a> | <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
-					<% else%>
-			  		<%= link_to('登录', new_user_session_path)  %> | <a href="/users/sign_up">注册</a>
-			 	  <% end%>
-	  		</form>
+	     <ul class="nav">
+          <% if current_user%>
+            <li><a href="#"><%= current_user.username%></a></li><li><%= link_to('登出', destroy_user_session_path, :method => :delete) %> </li>
+          <% else%>
+            <li><%= link_to('登录', new_user_session_path)  %></li>
+            <li><a href="/users/sign_up">注册</a></li>
+          <% end%>
+        </ul>
 			</div>
 	  </div>
 	</div>

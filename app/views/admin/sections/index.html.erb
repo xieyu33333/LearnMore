@@ -13,10 +13,14 @@
 <% @sections.each do |section| %>
   <tr>
     <td><%= section.name %></td>
-    <td><%= section.picture %></td>
+    <% if section.picture%>
+    <td><%= image_tag section.picture.image_url, :style => 'height:25px; width:25px' %></td>
+    <% else%>
+    <td></td>
+    <% end %>
     <td><%= section.description %></td>
     <td><%= link_to '显示', section %></td>
-    <td><%= link_to '编辑', edit_section_path(section) %></td>
+    <td><%= link_to '编辑', edit_admin_section_path(section) %></td>
     <td><%= link_to '删除', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

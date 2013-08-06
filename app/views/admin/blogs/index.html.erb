@@ -17,7 +17,7 @@
     <td><%= blog.faverates_count %></td>
     <td><%= blog.hit%></td>    
     <td><%= blog.created_at %></td>
-    <td><%= link_to '编辑', edit_blog_path(blog) %> | <%= link_to '删除', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '编辑', edit_admin_blog_path(blog) %> | <%= link_to '删除', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

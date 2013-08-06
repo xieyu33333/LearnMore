@@ -6,11 +6,16 @@
         <h4 class = "red_head"><%= classify %></h4>
         <% @blog.each do |blog|%>
           <% if blog[:blogtype] == classify %>
-            <li><%= link_to blog.title, blog %></li>
+            <li style="margin-left:10px"><%= link_to blog.title, blog %></li>
           <% end%>
         <% end%>
       <% end%>
     <% end%>
+    <% if current_user.admin? || @user.index(current_user.id)%>
+      <div class="newblog_content">
+        <%= link_to '新建文章',section_blogs_path(@section),:class => 'btn btn-primary newblog'%>
+      </div>
+    <% end %>
   </div>
 
   <div class = "span9 bordered">

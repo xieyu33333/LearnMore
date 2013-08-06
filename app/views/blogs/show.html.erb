@@ -1,6 +1,7 @@
 <div class="container">
+	<p id="notice"><%= notice %></p>
 	<div class = "span3 blog_left">
-		<%= @blog.created_at %>
+		<p><%= @blog.created_at %></p>
 		<p>
 		  <b>访问计数:</b>
 		  <%= @blog.hit %>
@@ -12,8 +13,7 @@
 		</p>
 	</div>
   <div class="span8">
-		<p id="notice"><%= notice %></p>
-		  <h2 class = "center"><%= @blog.title %></h2>
+		  <h2 class = "center red_head"><%= @blog.title %></h2>
 
 		<p>
 		  <%= @blog.user.username %>
@@ -41,12 +41,18 @@
 			</div>
 		</div>
 		<% if @comments%>
-			<% @comments.each do |comment|%>
-			  <div class='comment_box'>
-			  	<%= image_tag "http://tp4.sinaimg.cn/1355610915/50/5665911088/1", :class => "span1"%>
-				  <p class="span6"><%= sanitize comment.comment %></p>
-			  </div>
-			<% end %>
+		  <div class="comment_content">
+				<% @comments.each do |comment|%>
+				  <div class='comment_box'>
+				  	<% if comment.user.picture%>
+				  	  <%= image_tag comment.user.picture.image_url, :class => "span1"%>
+				  	 <% else %>
+				  	  <%= image_tag 'http://zz.comsenz.com/attachment/201103/4/11152_12992250415788.jpg', :class => "span1"%>
+				  	 <% end %>
+					  <p class="span6"><%= sanitize comment.comment %></p>
+				  </div>
+				<% end %>
+		  </div>
 		<% end %>
 		<section id="comment_section">
 			<%= form_tag("/comments/create_blog_comment", :method => "post") do %>
