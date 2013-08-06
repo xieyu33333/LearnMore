@@ -13,7 +13,7 @@
     <% end%>
     <% if current_user.admin? || @user.index(current_user.id)%>
       <div class="newblog_content">
-        <%= link_to '新建文章',section_blogs_path(@section),:class => 'btn btn-primary newblog'%>
+        <%= link_to '管理文章', section_blogs_path(@section), :class => 'btn btn-primary newblog'%>
       </div>
     <% end %>
   </div>

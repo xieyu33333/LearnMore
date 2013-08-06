@@ -6,7 +6,7 @@ class Admin::BlogsController < Admin::BaseController
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy
-    redirect_to blogs_url
+    redirect_to '/admin/blogs'
   end
 
   def edit
