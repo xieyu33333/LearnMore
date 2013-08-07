@@ -109,3 +109,28 @@ li {
 .newblog{
 	margin: 25px 0 20px 60px;
 }
+
+.add{
+float:left;
+height:27px;
+width:105px;
+background-position: 0 0;
+}
+
+.addmore{
+float:left;
+height:27px;
+width:105px;
+background-position: 0 0;
+background:image-url("addmore.png");	
+}
+.plusmore{
+@extend .add;
+background:image-url("plusmore.png");
+}
+.addmore:hover{
+background-position: 0 -29px;
+}
+.plusmore:hover{
+background-position: 0 -29px;
+}

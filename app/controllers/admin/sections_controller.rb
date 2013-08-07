@@ -30,6 +30,9 @@ class Admin::SectionsController < Admin::BaseController
     if !params[:sectionLogo].nil?
       @section.add_picture(params[:sectionLogo])
     end
+    if !params[:users].nil? && params[:users].any?
+      @section.update_users(params[:users])
+    end
     if @section.save
       redirect_to [:admin, @section], notice: 'Section was successfully updated.'
     else

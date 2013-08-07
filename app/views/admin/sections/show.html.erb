@@ -3,13 +3,20 @@
 <%= image_tag @section.picture.image_url %>
 <% end %>
 <p>
-  <b>Name:</b>
+  <b>版块名称:</b>
   <%= @section.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>描述:</b>
   <%= @section.description %>
+</p>
+
+<p>
+  <b>作者:</b>
+  <% @section.users.each do |user|%>
+    <%= link_to user.username, user %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_admin_section_path(@section) %> |

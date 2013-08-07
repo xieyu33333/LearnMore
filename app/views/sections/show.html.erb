@@ -1,6 +1,6 @@
 <div class = "home_container">
   <div class = "span3 bordered">
-    <h3 class = "red_head">文章列表</h3>
+    <h3 class = "red_head">文 章</h3>
     <% if @blog_classify %>
       <% @blog_classify.each do |classify| %>
         <h4 class = "red_head"><%= classify %></h4>
@@ -11,10 +11,12 @@
         <% end%>
       <% end%>
     <% end%>
-    <% if current_user.admin? || @user.index(current_user.id)%>
-      <div class="newblog_content">
-        <%= link_to '管理文章', section_blogs_path(@section), :class => 'btn btn-primary newblog'%>
-      </div>
+    <% if current_user %>
+      <% if current_user.admin? || @user.index(current_user.id) %>
+        <div class="newblog_content">
+          <%= link_to '管理文章', section_blogs_path(@section), :class => 'btn btn-primary newblog'%>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
@@ -28,7 +30,7 @@
   </div>
 
   <div class = "span3 bordered">
-    <h3 class = "red_head">资料列表</h3>
+    <h3 class = "red_head">资 料</h3>
     <% if @file_classify %>
       <% @file_classify.each do |classify| %>
       <h4 class = "red_head"><%= classify %></h4>
@@ -37,6 +39,15 @@
             <li><%= link_to topic.filename, "/studyfiles/#{topic.id}/download" %></li>
           <% end %>
         <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+   <div class = "span3 bordered">
+    <h3 class = "red_head">作 者</h3>
+    <% if @section.users%>
+      <% @section.users.each do |user|%>
+        <%= link_to user.username, user %></br>
       <% end %>
     <% end %>
   </div>

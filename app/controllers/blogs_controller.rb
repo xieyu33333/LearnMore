@@ -1,4 +1,7 @@
 class BlogsController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :index]
+  before_filter :author?, only: [:destroy, :edit]
+  before_filter :mumber?, only: [:new, :create, :index]
   def index
     @blogs = Blog.find_all_by_section_id(params[:section_id])
   end
@@ -52,4 +55,23 @@ class BlogsController < ApplicationController
     @blog.destroy
     redirect_to blogs_url
   end
+
+  def author?
+    @blog = Blog.find(params[:id])
+    if current_user != @blog.user
+      render 'homes/show_503'
+    end
+  end
+
+  def mumber?
+    if params[:section_id]
+      @section = Section.find(params[:section_id])
+      if current_user && !@section.users.pluck(:id).index(current_user.id)
+        render 'homes/show_503'
+      end
+    else
+      true
+    end
+  end
+
 end

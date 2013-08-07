@@ -16,8 +16,20 @@
     <%= f.text_field :name %>
   </div>
 
-  <p>版块图片</p>
+  <p>版块图片：</p>
   <input id = "picture_uploader" type="file" name="sectionLogo[]" />
+
+  <p>添加作者：</p>
+  <div class="section_user">
+    <% if @section.users.any?%>
+      <% @section.users.each do |user| %>
+        <input type="text" name="users[]" value="<%= user.username%>"/>
+      <% end%>
+    <% end%>
+    <input name='users[]' type="text" />
+  </div>
+  <div class="addmore"></div>
+  <div class="plusmore"></div></br>
 
   <div class="field">
     <%= f.label '版块介绍：' %><br />

@@ -57,5 +57,14 @@ $(document).ready(function(){
 				}
 			})
 		}
-    })
+  })
+
+  $(".addmore").click(function(){
+		$('<input class="create_author" type="text" name="users[]"/>').appendTo($('.section_user'));
+	})
+	
+
+	$(".plusmore").click(function(){
+		$('.section_user :last-child').remove();
+	})
 })
