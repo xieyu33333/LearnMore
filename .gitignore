@@ -13,3 +13,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+public/assets/
+public/uploads/
+vendor/bundle/
+.directory
+db/schema.rb
+#config/app_config.*.yml
+nbproject/*
+brakeman.html
