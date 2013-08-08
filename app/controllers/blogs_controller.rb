@@ -66,7 +66,9 @@ class BlogsController < ApplicationController
   def mumber?
     if params[:section_id]
       @section = Section.find(params[:section_id])
-      if current_user && !@section.users.pluck(:id).index(current_user.id)
+      if current_user.admin? || @section.users.pluck(:id).index(current_user.id)
+        true
+      else
         render 'homes/show_503'
       end
     else
