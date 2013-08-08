@@ -1,6 +1,0 @@
-redis_host: "127.0.0.1"
-redis_port: "6379"
-main_domain: 'http://textlearn.net'
-app_path: '/home/xieyu/Dropbox/website/myself/data_download'
-memcached_host: '127.0.0.1'
-picture_url: 'http://textlearn.net'
