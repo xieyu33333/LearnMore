@@ -10,24 +10,22 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :标题 %><br />
-    <%= f.text_field :title %>
-  </div>
-
-  <!--<%= select(:blog, :blogtype, options_for_select(@type_arr)) %>-->
-
-  <p>添加分类</p>
-  <%= f.text_field :blogtype %>
+  <table class="table table-bordered blog_title">
+    <tr>
+      <th><%= f.label :标题： ,:class => 'editblog'%></td>
+      <td><%= f.text_field :title, :class => 'blog_sort'%></td>
+      <th><%= f.label :分类： ,:class => 'editblog'%></td>
+      <td><%= f.text_field :blogtype ,:class => 'blog_sort'%></td>
+  </tr>
+  </table>
 
   <%= f.hidden_field :section_id, :value => params[:section_id] %>
 
   <div class="field">
-    <%= f.label :artical %><br />
     <%= f.kindeditor :artical , :class=>"blog_content" , :allowFileManager => false , :editor_id => 'my_editor' %>
   </div>
 
   <div class="actions">
-    <%= f.submit :value => "发 布"%>
+    <%= f.submit :value => "发 布", :class => 'btn btn-primary'%>
   </div>
 <% end %>

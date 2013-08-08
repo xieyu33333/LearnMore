@@ -20,6 +20,10 @@ body{
 	color: #666;
 }
 
+html{
+	padding-bottom: 60px;
+}
+
 #notice {
   color: green;
   padding:5px;
@@ -139,4 +143,39 @@ background-position: 0 -29px;
 	height:60px;
 	background: #1f2024;
 	border-top: 1px solid #27292e;
+}
+
+.actions{
+	margin-top: 20px;
+}
+
+.editblog{
+	display: inline-block;
+	*display: inline;
+	font-size: 16px;
+	line-height: 34px;
+	margin: 0;
+	padding-left:8px;
+}
+
+input.blog_sort{
+	margin: 0;
+	border:none;
+	padding:8px;
+	width:96%;
+	font-size: 17px;
+}
+
+.blog_title tr td{
+  padding:0;
+}
+
+.blog_title tr th{
+  padding:0;
+  background: #f5f5f5;
+}
+
+.blog_title{
+	margin: 0;
+	border-bottom: none;
 }
