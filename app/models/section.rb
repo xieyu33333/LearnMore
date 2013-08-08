@@ -17,10 +17,9 @@ class Section < ActiveRecord::Base
   def add_users(users)
     users.each do |username|
       user = User.find_by_username(username)
-      if user.nil?
-        "can't find this user"
+      if !user.nil?
+        self.users << user
       end
-      self.users << user
     end
   end
 
@@ -32,10 +31,7 @@ class Section < ActiveRecord::Base
     end
     updated_users_array.each do |username|
       user = User.find_by_username(username)
-      if user.nil?
-        "can't find this user"
-      end
-      if !self.users.exists?(user)
+      if !self.users.exists?(user) && !user.nil?
         self.users << user
       end
     end
