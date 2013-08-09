@@ -18,8 +18,9 @@
       <td><%= f.text_field :blogtype ,:class => 'blog_sort'%></td>
   </tr>
   </table>
-
-  <%= f.hidden_field :section_id, :value => params[:section_id] %>
+  <% if params[:section_id]%>
+    <%= f.hidden_field :section_id, :value => params[:section_id] %>
+  <% end %>
 
   <div class="field">
     <%= f.kindeditor :artical , :class=>"blog_content" , :allowFileManager => false , :editor_id => 'my_editor' %>

@@ -24,6 +24,11 @@ html{
 	padding-bottom: 60px;
 }
 
+textarea{
+	width:75%;
+	height:250px;
+}
+
 #notice {
   color: green;
   padding:5px;
@@ -46,8 +51,13 @@ html{
 	display:none;
 }
 
-.home_container{
+.show_container{
 	width:1250px;
+	margin:auto;
+}
+
+.home_container{
+	width:1060px;
 	margin:auto;
 }
 

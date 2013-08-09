@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
   def index
     @sections = Section.all
+    #@body_id = 'home'
   end
 
   def show
@@ -11,6 +12,12 @@ class SectionsController < ApplicationController
     @blog = @section.blogs
     @file = @section.studyfiles
     @user = @section.users.pluck(:id)
+  end
+
+  def destroy
+    @section = Section.find(params[:id])
+    @section.destroy
+    redirect_to :back
   end
 end
 

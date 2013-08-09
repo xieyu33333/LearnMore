@@ -1,5 +1,4 @@
 <h3>博客管理</h3>
-
 <table class="table">
   <tr>
     <th>标题</th>
@@ -9,7 +8,6 @@
     <th>发布时间</th>
     <th></th>
   </tr>
-
 <% @blogs.each do |blog| %>
   <tr>
     <td><%= link_to blog.title, blog %></td>
@@ -21,7 +19,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Blog', new_blog_path %>

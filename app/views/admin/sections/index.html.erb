@@ -1,31 +1,23 @@
 <h3>版块管理</h3>
-
-<table class="table">
+<%= link_to '新建版块', new_admin_section_path, :class => 'btn btn-primary'%>
+<table class="table" style="margin-top:15px;">
   <tr>
     <th>版块名称</th>
     <th>版块图片</th>
     <th>版块介绍</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @sections.each do |section| %>
   <tr>
-    <td><%= section.name %></td>
+    <td><%= link_to section.name, section %></td>
     <% if section.picture%>
     <td><%= image_tag section.picture.image_url, :style => 'height:25px; width:25px' %></td>
     <% else%>
     <td></td>
     <% end %>
     <td><%= section.description %></td>
-    <td><%= link_to '显示', section %></td>
-    <td><%= link_to '编辑', edit_admin_section_path(section) %></td>
-    <td><%= link_to '删除', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '编辑', edit_admin_section_path(section) %> | <%= link_to '删除', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to '新建版块', new_admin_section_path %>

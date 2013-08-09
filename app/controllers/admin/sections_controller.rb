@@ -17,6 +17,9 @@ class Admin::SectionsController < Admin::BaseController
 
   def create
     @section = Section.new(params[:section])
+    if !params[:sectionLogo].nil?
+      @section.add_picture(params[:sectionLogo])
+    end
     if @section.save
       redirect_to @section, notice: 'Section was successfully created.'
     else
@@ -43,6 +46,6 @@ class Admin::SectionsController < Admin::BaseController
   def destroy
     @section = Section.find(params[:id])
     @section.destroy
-    redirect_to forums_url
+    redirect_to :back
   end
 end
