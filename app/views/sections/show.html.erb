@@ -36,14 +36,26 @@
       <h4 class = "red_head"><%= classify %></h4>
         <% @file.each do |topic|%>
           <% if topic[:filetype] == classify %>
-            <li><%= link_to topic.filename, "/studyfiles/#{topic.id}/download" %></li>
+            <% if !topic.outsite.blank?%>
+              <li style="margin-left:10px"><%= link_to topic.filename, topic.outsite%></li>
+            <% else %>
+              <li style="margin-left:10px"><%= link_to topic.filename, topic %></li>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
+
+    <% if current_user %>
+      <% if current_user.admin? || @user.index(current_user.id) %>
+        <div class="newblog_content">
+          <%= link_to '管理资料', section_studyfiles_path(@section), :class => 'btn btn-primary newblog'%>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
-   <div class = "span3 bordered">
+  <div class = "span3 bordered">
     <h3 class = "red_head">作 者</h3>
     <% if @section.users%>
       <% @section.users.each do |user|%>

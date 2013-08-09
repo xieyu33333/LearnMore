@@ -2,13 +2,16 @@ class StudyfilesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :index]
   before_filter :author?, only: [:destroy, :edit]
   before_filter :mumber?, only: [:new, :create, :index]
+  def index
+    @studyfiles = Studyfile.find_all_by_section_id(params[:section_id])
+  end
   def show
-    @studyfile = Studyfile.find_all_by_section_id(params[:section_id])
+    @studyfile = Studyfile.find(params[:id])
   end
 
   def new
     @studyfile = Studyfile.new
-    @type_arr = Studyfile.where(:section_id => params[:section_id]).pluck(:blogtype).uniq.map{|type| [type, type]}
+    @type_arr = Studyfile.where(:section_id => params[:section_id]).pluck(:filetype).uniq.map{|type| [type, type]}
   end
 
   def edit
@@ -55,8 +58,8 @@ class StudyfilesController < ApplicationController
   end
 
   def author?
-    @blog = Blog.find(params[:id])
-    if current_user != @blog.user
+    @studyfile = Studyfile.find(params[:id])
+    if current_user != @studyfile.user
       render 'homes/show_503'
     end
   end
