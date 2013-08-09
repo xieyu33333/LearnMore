@@ -37,9 +37,9 @@
         <% @file.each do |topic|%>
           <% if topic[:filetype] == classify %>
             <% if !topic.outsite.blank?%>
-              <li style="margin-left:10px"><%= link_to topic.filename, topic.outsite%></li>
+              <li style="margin-left:10px"><%= link_to topic.filename, topic.outsite, :target=> "_blank"%></li>
             <% else %>
-              <li style="margin-left:10px"><%= link_to topic.filename, topic %></li>
+              <li style="margin-left:10px"><%= link_to topic.filename, topic, :target=> "_blank" %></li>
             <% end %>
           <% end %>
         <% end %>
@@ -59,7 +59,7 @@
     <h3 class = "red_head">作 者</h3>
     <% if @section.users%>
       <% @section.users.each do |user|%>
-        <%= link_to user.username, user %></br>
+        <%= user.username %></br>
       <% end %>
     <% end %>
   </div>
