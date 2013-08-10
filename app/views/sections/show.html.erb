@@ -25,7 +25,7 @@
       <div class = "artical_block text_style">
         <h3><%= link_to blog.title, blog, :class => 'red_head' %></h3>
         <p><strong>作者：</strong><%= blog.user.username %></p>
-        <%= sanitize blog.artical %>
+        <%= blog.artical.html_safe %>
       </div>
       <% end %>
   </div>

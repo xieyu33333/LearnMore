@@ -24,7 +24,7 @@
 		</p>
 
 		<p>
-		  <%= sanitize @blog.artical %>
+		  <%= @blog.artical.html_safe %>
 		</p>
 		<div class="blog_buttom">
 			<div class="blog_controller">
