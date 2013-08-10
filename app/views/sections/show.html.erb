@@ -21,9 +21,10 @@
   </div>
 
   <div class = "span9 bordered">
-    <% @section.blogs.each do |blog|%>
-      <div class = "artical_block">
+    <% @section.blogs[0..4].each do |blog|%>
+      <div class = "artical_block text_style">
         <h3><%= link_to blog.title, blog, :class => 'red_head' %></h3>
+        <p><strong>作者：</strong><%= blog.user.username %></p>
         <%= sanitize blog.artical %>
       </div>
       <% end %>

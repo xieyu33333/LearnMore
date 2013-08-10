@@ -18,6 +18,8 @@
 
 body{
 	color: #666;
+	font-size: 15px;
+	font-family: sans-serif;
 }
 
 html{
@@ -27,6 +29,21 @@ html{
 textarea{
 	width:75%;
 	height:250px;
+}
+
+li {
+	list-style:none;
+}
+
+
+.text_style{
+  letter-spacing:1.5px;
+  padding: 20px;
+
+  li {
+	list-style:disc;
+	padding:5px 0 5px 0;
+  }
 }
 
 #notice {
@@ -90,10 +107,6 @@ textarea{
 	color: #d64;
 	font-weight: 500;
 	font-family: "Lato", 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 'Helvetica Neue', "aria";
-}
-
-li {
-	list-style:none;
 }
 
 .section_block{
