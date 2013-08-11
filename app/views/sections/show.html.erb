@@ -24,7 +24,7 @@
     <% @section.blogs[0..4].each do |blog|%>
       <div class = "artical_block text_style">
         <h3><%= link_to blog.title, blog, :class => 'red_head' %></h3>
-        <p><strong>作者：</strong><%= blog.user.username %></p>
+        <p><strong>作者：</strong><%= link_to blog.user.username, blog.user %></p>
         <%= blog.artical.html_safe %>
       </div>
       <% end %>
@@ -60,7 +60,10 @@
     <h3 class = "red_head">作 者</h3>
     <% if @section.users%>
       <% @section.users.each do |user|%>
-        <%= user.username %></br>
+        <div class="section_user">
+          <%= image_tag gravatar_for(user), :class => 'span1', :alt => user.username%>
+          <%= link_to user.username, user, :class => 'span1 section_username' %></br>
+        </div>
       <% end %>
     <% end %>
   </div>

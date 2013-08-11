@@ -1,19 +1,24 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-<div><%= image_tag gravatar_for(@user), :class => 'gravatar', :alt => @user.username%></div>
+<div style = 'height:90px'>
+  <%= image_tag gravatar_for(@user), :class => 'gravatar', :alt => @user.username%>
+  <% if current_user && @user.id == current_user.id%>
+    <%= link_to "去Gravatar设置头像",'http://cn.gravatar.com/', :class => 'span2 section_username'%>
+  <% end %>
+</div>
 <p>
-  <h4><%= @user.username %></h4>
+  <h4 class="main_username"><%= @user.username %></h4>
 </p>
 <p>
   <b>Ta的文章</b></br>
   <% @user.blog.each do |blog| %>
-    <%= link_to blog.title, blog %></br>
+    <li style="margin-left:10px"><%= link_to blog.title, blog %></li>
   <% end %>
 </p>
 <p>
   <b>Ta的收藏:</b></br>
   <% @user.faverate.each do |faverate| %>
-    <%= link_to faverate.blog.title, faverate.blog if faverate.blog %></br>
+    <li style="margin-left:10px"><%= link_to faverate.blog.title, faverate.blog if faverate.blog %></li>
   <% end%>
 </p>
 
