@@ -45,11 +45,7 @@
 		  <div class="comment_content">
 				<% @comments.each do |comment|%>
 				  <div class='comment_box'>
-				  	<% if comment.user.picture%>
-				  	  <%= image_tag comment.user.picture.image_url, :class => "span1"%>
-				  	 <% else %>
-				  	  <%= image_tag 'http://zz.comsenz.com/attachment/201103/4/11152_12992250415788.jpg', :class => "span1"%>
-				  	 <% end %>
+              <%= image_tag gravatar_for(comment.user), :class => 'span1', :alt => comment.user.username%>
 					  <p class="span6"><%= sanitize comment.comment %></p>
 				  </div>
 				<% end %>

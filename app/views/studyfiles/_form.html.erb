@@ -40,6 +40,11 @@
     <%= f.text_field :point %>
   </div>
 
+  <div class="field">
+    <%= f.label '版块调整'%><br />
+    <%= f.text_field :section_id %>
+  </div>
+
   <p>
     <label>上传</label>
     <%= f.file_field :file_url, :id => 'file_uploader' %>

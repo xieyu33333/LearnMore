@@ -6,8 +6,8 @@ class Admin::StudyfilesController < Admin::BaseController
   def destroy
     @studyfile = Studyfile.find(params[:id])
     file = Rails.public_path + @studyfile.file_url.to_s
-    File.delete(file) if File.exist?(file)
+    File.delete(file) if File.exist?(file) && !File.directory?(file)
     @studyfile.destroy
-    redirect_to studyfiles_url
+    redirect_to :back
   end
 end

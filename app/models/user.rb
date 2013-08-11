@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   has_many :comment
   has_many :topic
   belongs_to :user
-  has_one :picture, as: :imageable
   has_and_belongs_to_many :sections
 
   attr_accessor :login

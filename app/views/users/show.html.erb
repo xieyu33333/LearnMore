@@ -1,51 +1,21 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-
+<div><%= image_tag gravatar_for(@user), :class => 'gravatar', :alt => @user.username%></div>
 <p>
-  <b>用户名:</b>
-  <%= @user.username %>
+  <h4><%= @user.username %></h4>
 </p>
-
 <p>
-  <b>email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>我下载的:</b>
-  <% @user.download.each do |downlaod| %>
-    <%= download.studyfile.name%>
+  <b>Ta的文章</b></br>
+  <% @user.blog.each do |blog| %>
+    <%= link_to blog.title, blog %></br>
   <% end %>
 </p>
-
 <p>
-  <b>我收藏的资料:</b></br>
-  <% @user.faverate.each do |faverate| %>
-    <%= faverate.studyfile.filename if faverate.studyfile%>
-  <% end%>
-</p>
-<p>
-  <b>我收藏的博客:</b></br>
+  <b>Ta的收藏:</b></br>
   <% @user.faverate.each do |faverate| %>
     <%= link_to faverate.blog.title, faverate.blog if faverate.blog %></br>
   <% end%>
 </p>
 
-
-<p>
-  <b>累积积分:</b>
-  <%= @user.all_point %>
-</p>
-
-<p>
-  <b>剩余积分:</b>
-  <%= @user.point %>
-</p>
-
-<p>
-  <b>累计消费:</b>
-  <%= @user.cost %>
-</p>
-
-<%= link_to '返 回', users_path %>
+<%= link_to '返 回', :back , :class=>'btn btn-primary'%>
 </div>
