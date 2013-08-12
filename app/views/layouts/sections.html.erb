@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @section.name%> ——Text-Learn</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="Text-Learn" content="学习, Ruby, 历史, Rails, XHTML, JavaScript" />
+    <meta name="Title" content="Text-Learn 优质原创教程聚合">
+    <meta name="Author" content="庇护祝福">
+    <meta name="Subject" content="Text-Learn 优质原创教程聚合">
+    <meta name="Description" content="优质原创教程聚合,包括编程，中学教育，大学教育，职业教育等">
+    <meta name="Keywords" content="ruby rails 教育 ruby on rails 编程 教程">
+    <meta name="Language" content="zh-CN">
+    <meta name="Copyright" content="textlearn.net">
+    <meta name="Publisher" content="textlearn.net">
+    <meta name="Revisit-After" content="Text-Learn 优质原创教程聚合 Days">
+    <%= include_gon %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %> 
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?abdb3e4f7be05e61250980ada8b91d68";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+  </head>
+  <body id="<%= @body_id %>">
+    <%= render "layouts/header"%>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+    <%= render "layouts/footer"%>
+  </body>
+</html>
