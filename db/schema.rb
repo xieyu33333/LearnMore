@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809084437) do
+ActiveRecord::Schema.define(:version => 20130812032020) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -36,12 +36,13 @@ ActiveRecord::Schema.define(:version => 20130809084437) do
     t.text     "artical"
     t.integer  "user_id"
     t.string   "title",           :limit => 100
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.integer  "faverates_count",                :default => 0
     t.string   "blogtype"
     t.integer  "hit",                            :default => 0
     t.integer  "section_id"
+    t.integer  "order",                          :default => 100000
   end
 
   create_table "comments", :force => true do |t|
@@ -107,17 +108,18 @@ ActiveRecord::Schema.define(:version => 20130809084437) do
 
   create_table "studyfiles", :force => true do |t|
     t.string   "filename"
-    t.string   "filetype",        :default => "0", :null => false
-    t.integer  "downloads_count", :default => 0,   :null => false
-    t.integer  "faverates_count", :default => 0,   :null => false
+    t.string   "filetype",        :default => "0",    :null => false
+    t.integer  "downloads_count", :default => 0,      :null => false
+    t.integer  "faverates_count", :default => 0,      :null => false
     t.string   "file_url"
-    t.integer  "user_id",                          :null => false
-    t.integer  "point",           :default => 0,   :null => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.integer  "user_id",                             :null => false
+    t.integer  "point",           :default => 0,      :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "section_id"
     t.text     "description"
     t.string   "outsite"
+    t.integer  "order",           :default => 100000
   end
 
   create_table "topics", :force => true do |t|
