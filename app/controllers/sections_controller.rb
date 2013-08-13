@@ -2,7 +2,6 @@ class SectionsController < ApplicationController
   layout "application", only: [:index]
   def index
     @sections = Section.all
-    #@body_id = 'home'
   end
 
   def show
