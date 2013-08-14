@@ -52,7 +52,11 @@ DataDownload::Application.routes.draw do
 
   namespace :admin do
     resources :users, :only => [:index, :destroy]
-    resources :blogs, :only => [:index, :destroy, :edit]
+    resources :blogs, :only => [:index, :destroy, :edit] do
+      collection do
+        get "order"
+      end
+    end
     resources :studyfiles, :only => [:index, :destroy]
     resources :topics, :only => [:index, :destroy]
     resources :comments, :only => [:index, :destroy]

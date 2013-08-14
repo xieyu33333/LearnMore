@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20130812032020) do
     t.string   "blogtype"
     t.integer  "hit",                            :default => 0
     t.integer  "section_id"
-    t.integer  "order",                          :default => 100000
+    t.integer  "sort",                           :default => 100000
   end
 
   create_table "comments", :force => true do |t|
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(:version => 20130812032020) do
     t.integer  "section_id"
     t.text     "description"
     t.string   "outsite"
-    t.integer  "order",           :default => 100000
+    t.integer  "sort",            :default => 100000
   end
 
   create_table "topics", :force => true do |t|
