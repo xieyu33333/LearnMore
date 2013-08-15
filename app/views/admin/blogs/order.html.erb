@@ -1,11 +1,24 @@
-<h3>博客管理</h3>
-<% if @blog_classify %>
-  <% @blog_classify.each do |classify| %>
-    <h4 class = "red_head"><%= classify %><span><%= Blog.find_by_blogtype(classify).sort/1000 %></span></h4>
-    <% @blog.each do |blog|%>
-      <% if blog[:blogtype] == classify %>
-        <li style="margin-left:10px"><%= link_to blog.title, blog %><span><%= blog.sort%></span></li>
+<h3>排序管理</h3>
+<%= form_tag(change_order_admin_blogs_path)%>
+  <% if @blog_classify %>
+    <% @blog_classify.each do |classify| %>
+      <h4 class = "red_head"><%= classify %>
+        <span>
+          <% typeorder = Blog.find_by_blogtype(classify).sort/1000%>
+          <%= text_field_tag('change_order[big_value]', typeorder)%>
+        </span>
+      </h4>
+      <% @blog.each do |blog|%>
+        <% if blog[:blogtype] == classify %>
+          <li style="margin-left:10px"><%= link_to blog.title, blog %>
+            <span>
+              <% typeorder = Blog.find_by_blogtype(classify).sort/1000%>
+              <%= text_field_tag('change_order[small_value]', blog.sort-typeorder*1000)%>
+              <%= hidden_field_tag('change_order[id]', blog.id%>
+            </span>  
+          </li>
+        <% end%>
       <% end%>
     <% end%>
   <% end%>
-<% end%>
+  <%= submit_tag("order")%>

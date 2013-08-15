@@ -55,6 +55,7 @@ DataDownload::Application.routes.draw do
     resources :blogs, :only => [:index, :destroy, :edit] do
       collection do
         get "order"
+        post "change_order"
       end
     end
     resources :studyfiles, :only => [:index, :destroy]
