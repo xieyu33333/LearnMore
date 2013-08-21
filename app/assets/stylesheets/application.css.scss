@@ -220,6 +220,12 @@ input.blog_sort{
 	float:left;
 }
 
+.section_avatar{
+	border-radius: 50%;
+-moz-border-radius: 50%;
+-webkit-border-radius: 50%;
+}
+
 .main_username{
 	margin:10px 0 10px 0;
 	color: #d64;

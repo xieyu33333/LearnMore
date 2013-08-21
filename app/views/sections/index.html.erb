@@ -2,7 +2,7 @@
 <% @sections.each do |section| %>
   <div class = "section_block">
     <% if section.picture%>
-      <%= image_tag section.picture.image_url %></br>
+      <%= image_tag section.picture.image_url%></br>
     <% end %>
     <%=link_to section.name, section, :class => 'section_link'%>
     <%= section.description %>

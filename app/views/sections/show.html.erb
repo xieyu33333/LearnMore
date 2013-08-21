@@ -61,7 +61,7 @@
     <% if @section.users%>
       <% @section.users.each do |user|%>
         <div class="section_user">
-          <%= image_tag gravatar_for(user), :class => 'span1', :alt => user.username%>
+          <%= image_tag gravatar_for(user), :class => 'span1 section_avatar', :alt => user.username%>
           <%= link_to user.username, user, :class => 'span1 section_username' %></br>
         </div>
       <% end %>
