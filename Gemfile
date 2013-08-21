@@ -84,6 +84,7 @@ gem 'coderay'
 gem 'acts_as_commentable', '~> 3.0.1'
 gem "markitup-rails"
 gem 'gon'
+#gem 'faye'
 #gem 'whenever'
 gem 'rufus-scheduler'   #计划任务
 #gem 'cologger'
