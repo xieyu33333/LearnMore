@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :index]
   before_filter :author?, only: [:destroy, :edit]
   before_filter :mumber?, only: [:new, :create, :index]
-  layout "application", only: [:index, :new]
+  layout "application", only: [:index, :new, :order]
   def index
     @blogs = Blog.find_all_by_section_id(params[:section_id])
   end
@@ -75,6 +75,11 @@ class BlogsController < ApplicationController
     else
       true
     end
+  end
+
+  def order
+    @blog = Blog.where(:section_id => params[:section_id]).order("sort")
+    @blog_classify = @blog.pluck(:blogtype).uniq
   end
 
 end

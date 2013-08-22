@@ -1,24 +1,46 @@
 <h3>排序管理</h3>
-<%= form_tag(change_order_admin_blogs_path)%>
-  <% if @blog_classify %>
-    <% @blog_classify.each do |classify| %>
-      <h4 class = "red_head"><%= classify %>
-        <span>
-          <% typeorder = Blog.find_by_blogtype(classify).sort/1000%>
-          <%= text_field_tag('change_order[big_value]', typeorder)%>
-        </span>
-      </h4>
-      <% @blog.each do |blog|%>
-        <% if blog[:blogtype] == classify %>
-          <li style="margin-left:10px"><%= link_to blog.title, blog %>
-            <span>
+<div class="span3">
+  <% Section.all.each do |section|%>
+   <li><%= link_to section.name, "/admin/blogs/order?section=#{section.id}"%></li>
+  <% end %>
+</div>
+<div class="span7">
+  <table class="table">
+      <% if @blog_classify %>
+        <% @blog_classify.each do |classify| %>
+          <tr>
+            <td>
+              <h4 class = "red_head"><%= classify %></h4>
+            </td>
+            <td>
+              <form action="/admin/blogs/change_theme_order" method="post">
               <% typeorder = Blog.find_by_blogtype(classify).sort/1000%>
-              <%= text_field_tag('change_order[small_value]', blog.sort-typeorder*1000)%>
-              <%= hidden_field_tag('change_order[id]', blog.id%>
-            </span>  
-          </li>
+              <%= text_field_tag(:big_value, typeorder)%>
+              <%= hidden_field_tag(:classify, classify)%>
+              <%= hidden_field_tag(:section, params[:section])%>
+              <input type="submit" value="提交" class="btn btn-primary">
+              <div style="height:25px; width:25px">+</div>
+              </form>
+            </td>
+          </tr>
+          <% @blog.each do |blog|%>
+            <% if blog[:blogtype] == classify %>
+              <tr class="subitem">
+                <td>
+                  <li style="margin-left:10px"><%= link_to blog.title, blog %></li>
+                </td>
+                <td>
+                  <form action="/admin/blogs/change_item_order" method="post">
+                    <% typeorder = Blog.find_by_blogtype(classify).sort/1000%>
+                    <%= text_field_tag(:small_value, blog.sort-typeorder*1000)%>
+                    <%= hidden_field_tag(:id, blog.id)%>
+                    <input type="submit" value="提交" class="btn">
+                  </form>
+                </td>  
+              </tr>
+            <% end%>
+          <% end%>
         <% end%>
       <% end%>
-    <% end%>
-  <% end%>
-  <%= submit_tag("order")%>
+  </table>
+</div>

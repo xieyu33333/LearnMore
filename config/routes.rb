@@ -23,7 +23,11 @@ DataDownload::Application.routes.draw do
   end
 
   resources :sections do
-    resources :blogs
+    resources :blogs do
+      collection do
+        get "order"
+      end
+    end
     resources :studyfiles
     resources :users
   end
@@ -55,7 +59,8 @@ DataDownload::Application.routes.draw do
     resources :blogs, :only => [:index, :destroy, :edit] do
       collection do
         get "order"
-        post "change_order"
+        post "change_theme_order"
+        post "change_item_order"
       end
     end
     resources :studyfiles, :only => [:index, :destroy]

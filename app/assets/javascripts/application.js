@@ -67,4 +67,5 @@ $(document).ready(function(){
 	$(".plusmore").click(function(){
 		$('.section_user :last-child').remove();
 	})
+
 })
