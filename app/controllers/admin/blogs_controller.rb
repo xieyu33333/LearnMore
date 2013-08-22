@@ -24,7 +24,7 @@ class Admin::BlogsController < Admin::BaseController
   def change_theme_order
     @blog = Blog.where(:section_id => params[:section])
     @blog.where(:blogtype => params[:classify]).each do |blog|
-      blog.update_attribute(:sort , params[:big_value].to_i*1000)
+      blog.update_attribute(:sort , blog.sort-blog.sort/1000*1000+params[:big_value].to_i*1000)
     end
     redirect_to :back
   end
