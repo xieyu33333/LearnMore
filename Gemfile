@@ -86,5 +86,6 @@ gem "markitup-rails"
 gem 'gon'
 #gem 'faye'
 #gem 'whenever'
+gem 'faye-rails'
 gem 'rufus-scheduler'   #计划任务
 #gem 'cologger'
