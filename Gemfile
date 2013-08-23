@@ -88,4 +88,5 @@ gem 'gon'
 #gem 'whenever'
 gem 'rufus-scheduler'   #计划任务
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 #gem 'cologger'
