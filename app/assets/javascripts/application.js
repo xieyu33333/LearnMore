@@ -14,8 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require kindeditor
-//= require markitup
-//= require markitup/sets/xbbcode/set
+//= require turbolinks
 
 $(document).ready(function(){
 	function getvalue() { 
