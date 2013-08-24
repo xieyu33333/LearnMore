@@ -9,6 +9,9 @@ DataDownload::Application.routes.draw do
   end
 
   resources :blogs do
+    collection do
+      put "change_classify"
+    end
     resources :comments
   end
   
@@ -26,6 +29,7 @@ DataDownload::Application.routes.draw do
     resources :blogs do
       collection do
         get "order"
+        get "classify"
       end
     end
     resources :studyfiles

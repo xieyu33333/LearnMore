@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :index]
   before_filter :author?, only: [:destroy, :edit]
   before_filter :mumber?, only: [:new, :create, :index]
-  layout "application", only: [:index, :new, :order]
+  layout "application", only: [:index, :new, :order, :classify]
   def index
     @blogs = Blog.find_all_by_section_id(params[:section_id])
   end
@@ -80,6 +80,19 @@ class BlogsController < ApplicationController
   def order
     @blog = Blog.where(:section_id => params[:section_id]).order("sort")
     @blog_classify = @blog.pluck(:blogtype).uniq
+  end
+
+  def classify
+    @blog = Blog.where(:section_id => params[:section_id]).order("sort")
+    @blog_classify = @blog.pluck(:blogtype).uniq
+  end
+
+  def change_classify
+    @blog = Blog.where(:section_id => params[:section])
+    @blog.where(:blogtype => params[:old_classify]).each do |blog|
+      blog.update_attribute(:blogtype , params[:classify])
+    end
+    redirect_to :back
   end
 
 end

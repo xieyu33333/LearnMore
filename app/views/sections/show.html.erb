@@ -15,7 +15,6 @@
       <% if current_user.admin? || @user.index(current_user.id) %>
         <div class="newblog_content">
           <%= link_to '管理文章', section_blogs_path(@section), :class => 'btn btn-primary admin_blog'%>
-          <%= link_to '顺序调整', order_section_blogs_path(@section), :class => 'btn btn-primary admin_order'%>
         </div>
       <% end %>
     <% end %>

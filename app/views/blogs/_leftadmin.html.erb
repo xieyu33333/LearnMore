@@ -1,0 +1,10 @@
+<div class="span3">
+  <div style="margin:60px 0 30px 0">
+    <%= link_to '返回版块', section_path(params[:section_id]), :class => "btn btn-primary"%>
+  </div>
+  <ul class="nav nav-pills nav-stacked">
+    <li><%= link_to '首页管理', section_blogs_path(params[:section_id]) %></li>
+    <li><%= link_to '分类管理', classify_section_blogs_path(params[:section_id]) %></li>
+    <li><%= link_to '排序管理', order_section_blogs_path(params[:section_id]) %></li>
+  </ul>
+</div>
