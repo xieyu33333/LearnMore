@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812032020) do
+ActiveRecord::Schema.define(:version => 20130825171751) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20130812032020) do
     t.integer  "hit",                            :default => 0
     t.integer  "section_id"
     t.integer  "sort",                           :default => 100000
+    t.integer  "status",          :limit => 1,   :default => 0
+    t.integer  "editer",                         :default => 0
   end
 
   create_table "comments", :force => true do |t|

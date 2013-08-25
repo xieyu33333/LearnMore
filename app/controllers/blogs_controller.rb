@@ -26,8 +26,27 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    if Blog.find(params[:id]).status != 1 || Blog.find(params[:id]).editer = current_user.id || current_user.admin?
+      @blog = Blog.find(params[:id])
+      @type_arr = Blog.where(:section_id => params[:section_id]).pluck(:blogtype).uniq.map{|type| [type, type]}
+    else
+      render 'homes/show_editing'
+    end
+  end
+
+  def editing
+    user = current_user.id
     @blog = Blog.find(params[:id])
-    @type_arr = Blog.where(:section_id => params[:section_id]).pluck(:blogtype).uniq.map{|type| [type, type]}
+    @blog.update_attribute(:status, 1)
+    @blog.update_attribute(:editer, user)
+    redirect_to :back
+  end
+
+  def no_editing
+    @blog = Blog.find(params[:id])
+    @blog.update_attribute(:status, 0)
+    @blog.update_attribute(:editer, 0)
+    redirect_to :back
   end
 
   def create

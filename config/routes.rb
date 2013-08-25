@@ -10,7 +10,7 @@ DataDownload::Application.routes.draw do
 
   resources :blogs do
     collection do
-      put "change_classify"
+      put "change_classify"    
     end
     resources :comments
   end
@@ -55,6 +55,8 @@ DataDownload::Application.routes.draw do
   delete "/faverates/delete", :to => 'faverates#destroy'
   get "/homes/index"
   get "/homes/all_data"
+  match 'blogs/:id/editing' => 'blogs#editing', :constraints => { :id => /\d{1,15}/}
+  match 'blogs/:id/no_editing' => 'blogs#no_editing', :constraints => { :id => /\d{1,15}/}
   root :to => 'sections#index'
 
   namespace :admin do
