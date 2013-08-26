@@ -1,0 +1,8 @@
+<div class="container">
+  <h3>编辑文章</h3>
+  <div data-no-turbolink>
+    <%= link_to '开始编辑' , "/blogs/#{params[:id]}/editing", :class =>'btn btn-primary'%>
+    <span>(点击开始编辑后，其他人将不能编辑，直到您取消或者提交)</span>
+  </div></br>
+  <%= link_to '返 回', @blog.section %>
+</div>

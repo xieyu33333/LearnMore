@@ -18,7 +18,7 @@
 
 		<p data-no-turbolink>
 		  <span>作者：<%=link_to @blog.user.username, @blog.user%></span>
-		  <% if current_user && current_user.id == @blog.user.id %>
+		  <% if current_user && @user.index(current_user.id) %>
 		    <%= link_to '编 辑', edit_blog_path(@blog) %>
 		  <% end %>
 		</p>
