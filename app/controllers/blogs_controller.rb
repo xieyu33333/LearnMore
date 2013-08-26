@@ -31,7 +31,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     render 'begin_edit' and return if @blog.status != 1    
     render 'homes/show_editing' and return if @blog.editer != current_user.id && @blog.status = 1
-    render 'edit' if current_user.admin? ||  @blog.editer = current_user.id && @blog.status = 1 
+    render 'edit' if current_user.admin? || @blog.editer = current_user.id && @blog.status = 1 
   end
 
   def editing

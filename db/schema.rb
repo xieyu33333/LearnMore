@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130825171751) do
+ActiveRecord::Schema.define(:version => 20130826120053) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -33,18 +33,18 @@ ActiveRecord::Schema.define(:version => 20130825171751) do
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "blogs", :force => true do |t|
-    t.text     "artical"
+    t.text     "artical",         :limit => 16777215
     t.integer  "user_id"
     t.string   "title",           :limit => 100
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
-    t.integer  "faverates_count",                :default => 0
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.integer  "faverates_count",                     :default => 0
     t.string   "blogtype"
-    t.integer  "hit",                            :default => 0
+    t.integer  "hit",                                 :default => 0
     t.integer  "section_id"
-    t.integer  "sort",                           :default => 100000
-    t.integer  "status",          :limit => 1,   :default => 0
-    t.integer  "editer",                         :default => 0
+    t.integer  "sort",                                :default => 100000
+    t.integer  "status",          :limit => 1,        :default => 0
+    t.integer  "editer",                              :default => 0
   end
 
   create_table "comments", :force => true do |t|
