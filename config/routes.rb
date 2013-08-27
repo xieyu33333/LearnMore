@@ -26,6 +26,11 @@ DataDownload::Application.routes.draw do
   end
 
   resources :sections do
+    collection do
+      get "ask_for_section"
+      put "pass"
+    end
+
     resources :blogs do
       collection do
         get "order"
@@ -55,6 +60,7 @@ DataDownload::Application.routes.draw do
   delete "/faverates/delete", :to => 'faverates#destroy'
   get "/homes/index"
   get "/homes/all_data"
+  #get "sections/ask_for_section", :to => 'sections#ask_for_section'
   match 'blogs/:id/editing' => 'blogs#editing', :constraints => { :id => /\d{1,15}/}
   match 'blogs/:id/no_editing' => 'blogs#no_editing', :constraints => { :id => /\d{1,15}/}
   root :to => 'sections#index'
@@ -73,6 +79,7 @@ DataDownload::Application.routes.draw do
     resources :comments, :only => [:index, :destroy]
     resources :forums
     resources :sections
+    match 'sections/:id/pass' => 'sections#pass', :constraints => { :id => /\d{1,15}/}
   end
 
   

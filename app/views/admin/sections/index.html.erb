@@ -5,6 +5,7 @@
     <th>版块名称</th>
     <th>版块图片</th>
     <th>版块介绍</th>
+    <th>审核状态</th>
     <th></th>
   </tr>
 
@@ -16,8 +17,15 @@
     <% else%>
     <td></td>
     <% end %>
-    <td><%= section.description %></td>
-    <td><%= link_to '编辑', edit_admin_section_path(section) %> | <%= link_to '删除', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= section.description[0..25] %></td>
+    <td>
+      <% if section.status==0 %>
+        <span style="color:green">通过</span>
+      <% else%>
+        <span style="color:red">待审核</span>
+      <% end%>
+    </td>
+    <td><%= link_to '编辑', edit_admin_section_path(section) %> | <%= link_to '删除', "/admin/sections/#{section.id}", method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to '通过', "sections/#{section.id}/pass", method: :put %></td>
   </tr>
 <% end %>
 </table>
