@@ -14,7 +14,11 @@
     <% if current_user %>
       <% if current_user.admin? || @user.index(current_user.id) %>
         <div class="newblog_content">
-          <%= link_to '管理文章', section_blogs_path(@section), :class => 'btn btn-primary admin_blog'%>
+          <%= link_to '管理文章', section_blogs_path(@section), :section_id => 1, :class => 'btn btn-primary admin_blog'%>
+        </div>
+      <%else%>
+        <div class="newblog_content">
+          <%= link_to '成为作者', {:controller =>'authors',:action => 'new',:section_id => @section.id}, :class => 'btn btn-primary admin_blog'%>
         </div>
       <% end %>
     <% end %>

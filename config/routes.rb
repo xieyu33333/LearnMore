@@ -1,5 +1,7 @@
 DataDownload::Application.routes.draw do
 
+  resources :authors
+
   resources :topics, :only => [:new, :create, :update, :show, :edit]
 
   resources :comments do
@@ -79,6 +81,9 @@ DataDownload::Application.routes.draw do
     resources :comments, :only => [:index, :destroy]
     resources :forums
     resources :sections
+    resources :authors, :only => [:index, :destroy]
+
+    match 'authors/:id/pass' => 'authors#pass', :constraints => { :id => /\d{1,15}/}
     match 'sections/:id/pass' => 'sections#pass', :constraints => { :id => /\d{1,15}/}
   end
 
