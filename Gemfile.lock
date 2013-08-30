@@ -334,6 +334,7 @@ DEPENDENCIES
   mime-types
   mini_magick
   mysql2
+  nokogiri (~> 1.6.0)
   omniauth (~> 1.0.1)
   pry-rails
   quiet_assets

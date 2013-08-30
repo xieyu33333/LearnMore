@@ -29,9 +29,12 @@
       <div class = "artical_block text_style">
         <h3><%= link_to blog.title, blog, :class => 'red_head' %></h3>
         <p><strong>作者：</strong><%= link_to blog.user.username, blog.user %></p>
-        <%= blog.artical.html_safe %>
+        <div>
+          <%= Nokogiri::HTML::fragment(blog.artical[0..1800]).to_xml.html_safe %>
+        </div>
+        <div ><%= link_to '阅读全文...', blog, :style => "float:right;color:#d64" %></div>
       </div>
-      <% end %>
+    <% end %>
   </div>
 
   <div class = "span3 bordered">
