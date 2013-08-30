@@ -25,12 +25,12 @@
   </div>
 
   <div class = "span9 bordered">
-    <% @section.blogs[0..4].each do |blog|%>
+    <% @section.blogs[0..3].each do |blog|%>
       <div class = "artical_block text_style">
         <h3><%= link_to blog.title, blog, :class => 'red_head' %></h3>
         <p><strong>作者：</strong><%= link_to blog.user.username, blog.user %></p>
         <div>
-          <%= Nokogiri::HTML::fragment(blog.artical[0..1800]).to_xml.html_safe %>
+          <%= Nokogiri::HTML::fragment(blog.artical[0..1600]).to_xml.html_safe %>
         </div>
         <div ><%= link_to '阅读全文...', blog, :style => "float:right;color:#d64" %></div>
       </div>
