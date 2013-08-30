@@ -11,7 +11,7 @@
 		  <b>喜欢计数:</b>
 		  <b class="like_count"><%= @blog.faverates_count %></b>
 		</p>
-		<%= link_to '返 回', :back %>
+		<%= link_to '返 回', @blog.section %>
 	</div>
   <div class="span8 text_style">
 		  <h2 class = "center red_head"><%= @blog.title %></h2>
