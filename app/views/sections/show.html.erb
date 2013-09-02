@@ -25,7 +25,7 @@
   </div>
 
   <div class = "span9 bordered">
-    <% @section.blogs[0..3].each do |blog|%>
+    <% @section.blogs.order(:sort)[0..3].each do |blog|%>
       <div class = "artical_block text_style">
         <h3><%= link_to blog.title, blog, :class => 'red_head' %></h3>
         <p><strong>作者：</strong><%= link_to blog.user.username, blog.user %></p>
