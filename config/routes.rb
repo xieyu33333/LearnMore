@@ -31,6 +31,7 @@ DataDownload::Application.routes.draw do
     collection do
       get "ask_for_section"
       put "pass"
+      put "unpass"
     end
 
     resources :blogs do
@@ -85,6 +86,7 @@ DataDownload::Application.routes.draw do
 
     match 'authors/:id/pass' => 'authors#pass', :constraints => { :id => /\d{1,15}/}
     match 'sections/:id/pass' => 'sections#pass', :constraints => { :id => /\d{1,15}/}
+    match 'sections/:id/unpass' => 'sections#unpass', :constraints => { :id => /\d{1,15}/}
   end
 
   

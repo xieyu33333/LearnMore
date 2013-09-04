@@ -57,4 +57,10 @@ class Admin::SectionsController < Admin::BaseController
     @section.update_attribute(:status, 0)
     redirect_to :back
   end
+
+  def unpass
+    @section = Section.find(params[:id])
+    @section.update_attribute(:status, 1)
+    redirect_to :back
+  end
 end

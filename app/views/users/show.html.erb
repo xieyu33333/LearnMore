@@ -22,5 +22,12 @@
   <% end%>
 </p>
 
+<p>
+  <b>Ta的版块:</b></br>
+  <% @user.sections.each do |section| %>
+    <li style="margin-left:10px"><%= link_to section.name, section %></li>
+  <% end%>
+</p>
+
 <%= link_to '返 回', :back , :class=>'btn btn-primary'%>
 </div>

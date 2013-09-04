@@ -36,4 +36,8 @@ class Section < ActiveRecord::Base
       end
     end
   end
+
+  def pass?
+    status == 0
+  end
 end

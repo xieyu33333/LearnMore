@@ -19,13 +19,13 @@
     <% end %>
     <td><%= section.description[0..25] %></td>
     <td>
-      <% if section.status==0 %>
+      <% if section.pass? %>
         <span style="color:green">通过</span>
       <% else%>
         <span style="color:red">待审核</span>
       <% end%>
     </td>
-    <td><%= link_to '编辑', edit_admin_section_path(section) %> | <%= link_to '删除', "/admin/sections/#{section.id}", method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to '通过', "sections/#{section.id}/pass", method: :put %></td>
+    <td><%= link_to '编辑', edit_admin_section_path(section) %> | <%= link_to '删除', "/admin/sections/#{section.id}", method: :delete, data: { confirm: 'Are you sure?' } %> | <%if !section.pass?%><%= link_to '通过', "sections/#{section.id}/pass", method: :put %><% else%><%= link_to '隐藏', "sections/#{section.id}/unpass", method: :put %><% end%></td>
   </tr>
 <% end %>
 </table>
