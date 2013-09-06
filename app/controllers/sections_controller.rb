@@ -2,7 +2,7 @@ class SectionsController < ApplicationController
   layout "application", only: [:index]
   before_filter:authenticate_user!, only: [:create, :ask_for_section]
   def index
-    @sections = Section.where(:status => 0)
+    @sections = Section.includes(:picture).where(:status => 0)
   end
 
   def show
