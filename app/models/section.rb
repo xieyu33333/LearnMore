@@ -4,6 +4,7 @@ class Section < ActiveRecord::Base
   has_many :blogs
   has_many :studyfiles
   has_one :picture, as: :imageable
+  validates :name, :description, :presence=>true
 
   def add_picture(pictures)
     pictures.each do |pic|

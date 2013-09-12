@@ -4,6 +4,8 @@ class Blog < ActiveRecord::Base
   belongs_to :user
   belongs_to :section
   has_many :faverates
+  
+  validates :artical, :title, :presence=>true
 
   acts_as_commentable
   acts_as_cached

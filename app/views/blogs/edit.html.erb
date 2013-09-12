@@ -1,9 +1,8 @@
 <div class="container">
   <h3 class="span4">编辑文章</h3>
-  <div data-no-turbolink>
+  <div data-no-turbolink class="cancel_edit">
     <%= link_to '取消编辑' , "/blogs/#{params[:id]}/no_editing", :class =>'btn btn-primary'%>
     <span>取消后，其他人也可以编辑该帖的，您的修改将不会被保存</span>
   </div>
-  <%= link_to '返 回', @blog.section, :class => 'blog_back' %>
   <%= render 'form' %> 
 </div>

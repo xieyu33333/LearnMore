@@ -33,6 +33,10 @@ li {
 	list-style:none;
 }
 
+#error_explanation{
+	color: red;
+}
+
 .loading{
 	position: absolute;
 	top:43px;
@@ -67,10 +71,6 @@ li {
 }
 
 .notice{
-	display:none;
-}
-
-.alert{
 	display:none;
 }
 
@@ -259,6 +259,11 @@ input.blog_sort{
 	width:250px;
 }
 
+.cancel_edit{
+  margin: 17px 0 0 120px;
+  float: left;
+}
+
 // #subitem{
 // 	display: none;
 // }
@@ -277,3 +282,4 @@ input.blog_sort{
 //   vertical-align: middle;
 //   background: none;
 // }
+
