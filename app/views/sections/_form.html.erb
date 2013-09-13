@@ -1,0 +1,30 @@
+<%= form_for(@section, :html => {:multipart => true}) do |f| %>
+  <% if @section.errors.any? %>
+    <div id="alert alert_error">
+      <h2>版块创建失败</h2>
+      <ul>
+      <% @section.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label '版块名称：' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.label '版块图片：', :style=>"margin-top:10px;"%>
+  <input id = "picture_uploader" type="file" name="sectionLogo[]" />
+  <input name='users[]' type="hidden" value="<%= current_user.username%>"/>
+
+  <div class="field" style="margin-top:20px;">
+    <%= f.label '版块介绍：' %>
+    <%= f.text_area :description %>
+  </div>
+ 
+  <div class="actions">
+    <%= f.submit :value => '提 交', :class => 'btn btn-primary'%>
+  </div>
+<% end %>

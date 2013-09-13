@@ -1,0 +1,44 @@
+<div class="container">
+
+  <%= render "leftadmin"%>
+  <div class="span7">
+    <h3>排序管理</h3>
+    <table class="table">
+        <% if @blog_classify %>
+          <% @blog_classify.each do |classify| %>
+            <tr>
+              <td>
+                <h4 class = "red_head"><%= classify %></h4>
+              </td>
+              <td>
+                <form action="/admin/blogs/change_theme_order" method="post" class="order_form form-inline">
+                  <% typeorder = Blog.find_by_blogtype(classify).sort/1000%>
+                  <%= text_field_tag(:big_value, typeorder, :class => "order_input")%>
+                  <%= hidden_field_tag(:classify, classify)%>
+                  <%= hidden_field_tag(:section, params[:section_id])%>
+                  <input type="submit" value="提交" class="btn btn-primary">
+                </form>
+              </td>
+            </tr>
+            <% @blog.each do |blog|%>
+              <% if blog[:blogtype] == classify %>
+                <tr class=<%= classify%> id="subitem">
+                  <td>
+                    <li style="margin-left:10px"><%= link_to blog.title, blog %></li>
+                  </td>
+                  <td>
+                    <form action="/admin/blogs/change_item_order" method="post" class="order_form form-inline">
+                      <% typeorder = Blog.find_by_blogtype(classify).sort/1000%>
+                      <%= text_field_tag(:small_value, blog.sort-typeorder*1000, :class => "order_input")%>
+                      <%= hidden_field_tag(:id, blog.id)%>
+                      <input type="submit" value="提交" class="btn">
+                    </form>
+                  </td>  
+                </tr>
+              <% end%>
+            <% end%>
+          <% end%>
+        <% end%>
+    </table>
+  </div>
+</div>

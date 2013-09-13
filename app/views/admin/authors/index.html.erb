@@ -1,0 +1,22 @@
+<div class="container">
+  <h3>作者申请管理</h3>
+  <table class="table">
+    <tr>
+      <th>申请版块</th>
+      <th>用户名</th>
+      <th>自我介绍</th>
+      <th></th>
+    </tr>
+
+  <% @authors.each do |author| %>
+    <tr>
+      <td><%= link_to author.section.name, author.section %></td>
+      <td><%= link_to author.user.username, author.user %></td>
+      <td><%= author.content[0..20] %></td>
+      <td><%= link_to '详情', author %> | <%= link_to '通过', "/admin/authors/#{author.id}/pass" %> | <%= link_to '删除', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+</div>

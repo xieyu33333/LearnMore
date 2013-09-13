@@ -1,8 +1,6 @@
 <%= form_for(@blog) do |f| %>
   <% if @blog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
-
+    <div class="alert alert-error">
       <ul>
       <% @blog.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -21,6 +19,8 @@
   <% if params[:section_id]%>
     <%= f.hidden_field :section_id, :value => params[:section_id] %>
   <% end %>
+    <%= f.hidden_field :status, :value => 0 %>
+    <%= f.hidden_field :editer, :value => 0 %>
 
   <div class="field">
     <%= f.kindeditor :artical , :class=>"blog_content" , :allowFileManager => false , :editor_id => 'my_editor' %>

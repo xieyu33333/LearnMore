@@ -1,5 +1,7 @@
 DataDownload::Application.routes.draw do
 
+  resources :authors
+
   resources :topics, :only => [:new, :create, :update, :show, :edit]
 
   resources :comments do
@@ -9,6 +11,9 @@ DataDownload::Application.routes.draw do
   end
 
   resources :blogs do
+    collection do
+      put "change_classify"    
+    end
     resources :comments
   end
   
@@ -23,7 +28,18 @@ DataDownload::Application.routes.draw do
   end
 
   resources :sections do
-    resources :blogs
+    collection do
+      get "ask_for_section"
+      put "pass"
+      put "unpass"
+    end
+
+    resources :blogs do
+      collection do
+        get "order"
+        get "classify"
+      end
+    end
     resources :studyfiles
     resources :users
   end
@@ -47,7 +63,9 @@ DataDownload::Application.routes.draw do
   delete "/faverates/delete", :to => 'faverates#destroy'
   get "/homes/index"
   get "/homes/all_data"
-  mount Markitup::Rails::Engine, at: "markitup", as: "markitup"
+  #get "sections/ask_for_section", :to => 'sections#ask_for_section'
+  match 'blogs/:id/editing' => 'blogs#editing', :constraints => { :id => /\d{1,15}/}
+  match 'blogs/:id/no_editing' => 'blogs#no_editing', :constraints => { :id => /\d{1,15}/}
   root :to => 'sections#index'
 
   namespace :admin do
@@ -55,7 +73,8 @@ DataDownload::Application.routes.draw do
     resources :blogs, :only => [:index, :destroy, :edit] do
       collection do
         get "order"
-        post "change_order"
+        post "change_theme_order"
+        post "change_item_order"
       end
     end
     resources :studyfiles, :only => [:index, :destroy]
@@ -63,6 +82,11 @@ DataDownload::Application.routes.draw do
     resources :comments, :only => [:index, :destroy]
     resources :forums
     resources :sections
+    resources :authors, :only => [:index, :destroy]
+
+    match 'authors/:id/pass' => 'authors#pass', :constraints => { :id => /\d{1,15}/}
+    match 'sections/:id/pass' => 'sections#pass', :constraints => { :id => /\d{1,15}/}
+    match 'sections/:id/unpass' => 'sections#unpass', :constraints => { :id => /\d{1,15}/}
   end
 
   

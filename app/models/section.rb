@@ -4,6 +4,7 @@ class Section < ActiveRecord::Base
   has_many :blogs
   has_many :studyfiles
   has_one :picture, as: :imageable
+  validates :name, :description, :presence=>true
 
   def add_picture(pictures)
     pictures.each do |pic|
@@ -35,5 +36,9 @@ class Section < ActiveRecord::Base
         self.users << user
       end
     end
+  end
+
+  def pass?
+    status == 0
   end
 end

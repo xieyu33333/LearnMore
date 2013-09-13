@@ -1,8 +1,9 @@
 class BlogsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :destroy, :edit, :index]
-  before_filter :author?, only: [:destroy, :edit]
-  before_filter :mumber?, only: [:new, :create, :index]
-  layout "application", only: [:index, :new]
+  before_filter :author?, only: [:destroy]
+  before_filter :mumber?, only: [:edit]
+  before_filter :section_mumber?, only: [:index, :new, :create]
+  layout "application", only: [:index, :new, :order, :classify]
   def index
     @blogs = Blog.find_all_by_section_id(params[:section_id])
   end
@@ -18,6 +19,7 @@ class BlogsController < ApplicationController
     end
     gon.watch.faverate_id = @faverate
     @comments = @blog.comments
+    @user = @blog.section.users.pluck(:id)
   end
 
   def new
@@ -27,7 +29,24 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
-    @type_arr = Blog.where(:section_id => params[:section_id]).pluck(:blogtype).uniq.map{|type| [type, type]}
+    render 'begin_edit' and return if @blog.status != 1    
+    render 'homes/show_editing' and return if @blog.editer != current_user.id && @blog.status = 1
+    render 'edit' if current_user.admin? || @blog.editer = current_user.id && @blog.status = 1 
+  end
+
+  def editing
+    user = current_user.id
+    @blog = Blog.find(params[:id])
+    @blog.update_attribute(:status, 1)
+    @blog.update_attribute(:editer, user)
+    redirect_to edit_blog_url
+  end
+
+  def no_editing
+    @blog = Blog.find(params[:id])
+    @blog.update_attribute(:status, 0)
+    @blog.update_attribute(:editer, 0)
+    redirect_to edit_blog_url
   end
 
   def create
@@ -64,7 +83,7 @@ class BlogsController < ApplicationController
     end
   end
 
-  def mumber?
+  def section_mumber?
     if params[:section_id]
       @section = Section.find(params[:section_id])
       if current_user.admin? || @section.users.pluck(:id).index(current_user.id)
@@ -72,9 +91,35 @@ class BlogsController < ApplicationController
       else
         render 'homes/show_503'
       end
-    else
-      true
     end
+  end
+
+  def mumber?
+    @blog = Blog.find(params[:id])
+    @section = @blog.section
+    if current_user.admin? || @section.users.pluck(:id).index(current_user.id)
+      true
+    else
+      render 'homes/show_503'
+    end
+  end
+
+  def order
+    @blog = Blog.where(:section_id => params[:section_id]).order("sort")
+    @blog_classify = @blog.pluck(:blogtype).uniq
+  end
+
+  def classify
+    @blog = Blog.where(:section_id => params[:section_id]).order("sort")
+    @blog_classify = @blog.pluck(:blogtype).uniq
+  end
+
+  def change_classify
+    @blog = Blog.where(:section_id => params[:section])
+    @blog.where(:blogtype => params[:old_classify]).each do |blog|
+      blog.update_attribute(:blogtype , params[:classify])
+    end
+    redirect_to :back
   end
 
 end
