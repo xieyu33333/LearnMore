@@ -1,0 +1,14 @@
+<div class="container">
+  <h3>消息列表</h3>
+  <% @messages.each do |message|%>
+    <table class="table">
+      <tr>
+        <td>
+          <%= link_to message.content, message.link %>
+        </td>
+        <td><%= link_to '删除', message_path(message), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+        </td>
+      </tr>
+    <table>
+  <% end %>
+</div>

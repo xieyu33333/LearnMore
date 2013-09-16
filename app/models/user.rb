@@ -1,3 +1,4 @@
+#encoding: utf-8
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -13,8 +14,10 @@ class User < ActiveRecord::Base
   has_many :faverate
   has_many :comment
   has_many :topic
+  has_many :message
   belongs_to :user
   has_and_belongs_to_many :sections
+  after_create :push_message
 
   attr_accessor :login
   # attr_accessible :title, :body
@@ -33,6 +36,12 @@ class User < ActiveRecord::Base
       picture.name = pic
       picture.save!
       self.picture = picture
+    end
+  end
+
+  def push_message
+    User.where(:admin => 1).each do |admin|
+      admin.message.create(:content => "新增用户： #{self.username}", :link => "/users/#{self.id}")
     end
   end
   

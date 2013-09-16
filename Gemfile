@@ -87,7 +87,7 @@ gem "nokogiri", "~> 1.6.0"
 gem 'gon'
 #gem 'faye'
 #gem 'whenever'
-gem 'faye-rails'
+#gem 'faye-rails'
 gem 'rufus-scheduler'   #计划任务
 gem 'turbolinks'
 gem 'jquery-turbolinks'

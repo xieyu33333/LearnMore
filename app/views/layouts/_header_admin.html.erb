@@ -12,8 +12,14 @@
 	    <div style="float:right">
 	     <ul class="nav">
           <% if current_user%>
+            <% if current_user.message.count > 0%>
+              <li><a class="message_tip_red" href=<%= "/users/#{current_user.id}/messages"%>><%= current_user.message.count%></a></li>
+            <% else%>
+              <li><a class="message_tip" href=<%= "/users/#{current_user.id}/messages"%>>0</a></li>
+            <% end%>
             <li><%= link_to current_user.username, current_user %></a></li><li><%= link_to('登出', destroy_user_session_path, :method => :delete) %> </li>
           <% else%>
+            <li><a class="message_tip"></a></li>
             <li><%= link_to('登录', new_user_session_path)  %></li>
             <li><a href="/users/sign_up">注册</a></li>
           <% end%>

@@ -1,5 +1,10 @@
 DataDownload::Application.routes.draw do
 
+  # faye_server '/faye', :timeout => 25 do
+  #   map '/message' => PushMessagesController
+  #   map default: :block
+  # end
+
   resources :authors
 
   resources :topics, :only => [:new, :create, :update, :show, :edit]
@@ -49,12 +54,15 @@ DataDownload::Application.routes.draw do
       
   resources :downloads 
 
+  resources :messages
+
   resources :users do
       resources :downloads
       resources :faverates
       resources :studyfiles
       resources :comments
       resources :blogs
+      resources :messages
       collection do
         get "search"
       end

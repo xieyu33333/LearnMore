@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Section < ActiveRecord::Base
   attr_accessible :name, :description, :picture_id
   has_and_belongs_to_many :users
@@ -5,6 +6,7 @@ class Section < ActiveRecord::Base
   has_many :studyfiles
   has_one :picture, as: :imageable
   validates :name, :description, :presence=>true
+  after_create :section_message
 
   def add_picture(pictures)
     pictures.each do |pic|
@@ -40,5 +42,11 @@ class Section < ActiveRecord::Base
 
   def pass?
     status == 0
+  end
+
+  def section_message
+    User.where(:admin => 1).each do |admin|
+      admin.message.create(:content => "新增版块： #{self.name}", :link => "/sections/#{self.id}")
+    end
   end
 end

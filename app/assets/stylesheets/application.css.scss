@@ -33,6 +33,32 @@ li {
 	list-style:none;
 }
 
+.navbar .nav > li > .message_tip{
+	padding:2px 7px 2px 7px;	
+	margin: 8px 0 8px 0;
+	background:#999999;
+	border-radius: 2px;
+	color:white;
+	cursor: pointer;
+}
+
+.navbar .nav > li > .message_tip:hover{
+	background:#999999;
+}
+
+.navbar .nav > li > .message_tip_red{
+	padding:2px 7px 2px 7px;	
+	margin: 8px 0 8px 0;
+	background:#C43C35;
+	border-radius: 2px;
+	color:white;
+	cursor: pointer;
+}
+
+.navbar .nav > li > .message_tip_red:hover{
+	background:#C43C35;
+}
+
 #error_explanation{
 	color: red;
 }
