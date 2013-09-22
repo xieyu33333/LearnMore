@@ -39,6 +39,10 @@ group :test do
   gem 'rb-fsevent' , :require => false
   gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
   gem 'rb-inotify' if /linux/ =~ RUBY_PLATFORM
+  gem "database_cleaner"
+  gem "launchy"
+  gem "selenium-webdriver"
+  gem "faker"
 end
 
 group :production do

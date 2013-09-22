@@ -20,7 +20,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: data_download
+  database: data_download_test
   pool: 5
   username: root
   password: x890520
