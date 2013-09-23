@@ -5,6 +5,16 @@ GIT
     second_level_cache (1.6.2)
       activesupport (~> 3.2.0)
 
+GIT
+  remote: https://github.com/qiniu/ruby-sdk.git
+  revision: b1e6235b2e2c47cc510c719ad48272f9e3484ab5
+  specs:
+    qiniu-rs (3.4.5)
+      json (~> 1.7)
+      mime-types (~> 1.19)
+      rest-client (~> 1.6)
+      ruby-hmac (~> 0.4)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -70,6 +80,9 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    carrierwave-qiniu (0.0.8)
+      carrierwave
+      qiniu-rs (~> 3.4.2)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.2.8)
@@ -230,6 +243,8 @@ GEM
       json (~> 1.4)
     redcarpet (2.3.0)
     redis (3.0.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -245,6 +260,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-hmac (0.4.0)
     ruby2ruby (2.0.3)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
@@ -315,6 +331,7 @@ DEPENDENCIES
   cancan
   capybara
   carrierwave
+  carrierwave-qiniu (~> 0.0.8)
   coderay
   coffee-rails (~> 3.2.1)
   compass-rails (~> 1.0.3)
@@ -337,6 +354,7 @@ DEPENDENCIES
   nokogiri (~> 1.6.0)
   omniauth (~> 1.0.1)
   pry-rails
+  qiniu-rs!
   quiet_assets
   rails (= 3.2.13)
   rails_kindeditor

@@ -5,6 +5,6 @@ class Picture < ActiveRecord::Base
   mount_uploader :name, PictureUploader
   
   def image_url
-    "#{APP_CONFIG['picture_url']}#{self.name}"
+    "#{self.name}"
   end
 end
