@@ -19,7 +19,11 @@ class BlogsController < ApplicationController
     end
     gon.watch.faverate_id = @faverate
     @comments = @blog.comments
-    @user = @blog.section.users.pluck(:id)
+    if @blog.section
+      @user = @blog.section.users.pluck(:id)
+    else 
+      @user = []
+    end
   end
 
   def new
