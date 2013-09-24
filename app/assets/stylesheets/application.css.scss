@@ -33,6 +33,16 @@ li {
 	list-style:none;
 }
 
+.logo{
+	display: block;
+	float: left;
+	height:40px;
+	width:40px;
+	margin:0 10px 0 15px;
+	background: image-url("brand.png");
+	padding:none;
+}
+
 .navbar .nav > li > .message_tip{
 	padding:2px 7px 2px 7px;	
 	margin: 8px 0 8px 0;
