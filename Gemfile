@@ -76,9 +76,6 @@ gem 'bcrypt-ruby'
 gem 'unicorn'
 gem 'kaminari'
 gem "rails_kindeditor"
-gem 'carrierwave'
-gem 'mime-types'
-gem "mini_magick"
 gem "devise"
 gem "warden"
 gem 'uuidtools'
@@ -87,6 +84,11 @@ gem 'redcarpet'
 gem 'coderay'
 gem 'acts_as_commentable', '~> 3.0.1'
 gem "nokogiri", "~> 1.6.0"
+gem 'carrierwave'
+gem 'mime-types'
+gem "mini_magick"
+gem 'qiniu-rs', :git => "https://github.com/qiniu/ruby-sdk.git"
+gem "carrierwave-qiniu", "~> 0.0.8"
 #gem "markitup-rails"
 gem 'gon'
 #gem 'faye'

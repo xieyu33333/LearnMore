@@ -10,7 +10,6 @@
     <meta name="Language" content="zh-CN">
     <%= include_gon %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %> 
     <script>
     var _hmt = _hmt || [];
@@ -26,7 +25,7 @@
     <%= render "layouts/header"%>
     <%= yield %>
     <%= render "layouts/footer"%>
-    <%= render "layouts/loading"%>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
