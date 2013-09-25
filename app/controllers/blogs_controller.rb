@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   before_filter :author?, only: [:destroy]
   before_filter :mumber?, only: [:edit]
   before_filter :section_mumber?, only: [:index, :new, :create]
-  layout "application", only: [:index, :new, :order, :classify]
+  layout "application", only: [:index, :order, :classify]
   def index
     @blogs = Blog.find_all_by_section_id(params[:section_id])
   end
