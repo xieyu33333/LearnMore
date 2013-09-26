@@ -10,8 +10,8 @@
     <meta name="Language" content="zh-CN">
     <%= include_gon %>
     <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= csrf_meta_tags %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %> 
     <script>
     var _hmt = _hmt || [];
     (function() {
@@ -22,7 +22,7 @@
     })();
     </script>
   </head>
-  <body id="<%= @body_id %>">
+  <body id="<%= @body_id %>" onload="prettyPrint()">
     <%= render "layouts/header"%>
     <%= yield %>
     <%= render "layouts/footer"%>
