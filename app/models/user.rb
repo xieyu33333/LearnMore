@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :sections
   after_create :push_message
+  validates :username, :uniqueness=>true
+  validates :username, :presence=>true
 
   attr_accessor :login
   # attr_accessible :title, :body

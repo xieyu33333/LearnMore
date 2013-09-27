@@ -17,6 +17,7 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
   after_create :comment_message
+  validates :comment, :presence => true
 
   def comment_message
     if self.commentable_type == "Blog"
