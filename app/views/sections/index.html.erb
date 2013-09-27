@@ -1,13 +1,14 @@
 <div class = "home_container">
-<% @sections.each do |section| %>
-  <div class = "section_block">
-    <% if section.picture%>
-      <%= image_tag section.picture.image_url, :class => 'index_img'%></br>
-    <% end %>
-    <%=link_to section.name, section, :class => 'section_link'%>
-    <%= section.description %>
-  </div>
-<% end %>
+  <% @sections.each do |section| %>
+    <div class = "section_block">
+      <% if section.picture%>
+        <%= image_tag section.picture.image_url, :class => 'index_img'%></br>
+      <% end %>
+      <%=link_to section.name, section, :class => 'section_link'%>
+      <%= section.description %>
+    </div>
+  <% end %>
+  <div class="clear"></div>
 </div>
 
 

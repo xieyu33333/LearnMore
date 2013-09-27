@@ -7,7 +7,7 @@ describe User do
   end
 
   it "用户名必填" do
-    expect(build(:user, :username=>nil)).to have(1).errors_on(:email)
+    expect(build(:user, :username=>nil)).to have(1).errors_on(:username)
   end
 
   it "邮箱不能重复" do
