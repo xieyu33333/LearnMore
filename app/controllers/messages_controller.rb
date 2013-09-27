@@ -9,4 +9,10 @@ class MessagesController < ApplicationController
     @message.destroy
     redirect_to :back
   end
+
+  def delete_all
+    @messages = Message.where(:user_id => current_user.id)
+    @messages.delete_all
+    redirect_to :back
+  end
 end

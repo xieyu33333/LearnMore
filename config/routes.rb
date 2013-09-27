@@ -54,7 +54,11 @@ DataDownload::Application.routes.draw do
       
   resources :downloads 
 
-  resources :messages
+  resources :messages do
+    collection do
+      delete "delete_all"
+    end
+  end
 
   resources :users do
       resources :downloads

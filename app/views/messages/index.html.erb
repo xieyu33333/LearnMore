@@ -1,12 +1,14 @@
 <div class="container">
   <h3>消息列表</h3>
+  <%= link_to "清除全部", delete_all_messages_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger'%>
+  <p></p>
   <% @messages.each do |message|%>
     <table class="table">
       <tr>
-        <td>
+        <td class="span8">
           <%= link_to message.content, message.link %>
         </td>
-        <td><%= link_to '删除', message_path(message), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+        <td class="span3"><%= link_to '删除', message_path(message), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
         </td>
       </tr>
     <table>
