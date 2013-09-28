@@ -21,7 +21,7 @@
     })();
     </script>
   </head>
-  <body id="<%= @body_id %>">
+  <body id="<%= @body_id %>" onload="prettyPrint()">
     <%= render "layouts/header"%>
     <%= yield %>
     <%= render "layouts/footer"%>
