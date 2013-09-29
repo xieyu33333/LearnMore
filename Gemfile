@@ -89,6 +89,7 @@ gem 'mime-types'
 gem "mini_magick"
 gem 'qiniu-rs', :git => "https://github.com/qiniu/ruby-sdk.git"
 gem "carrierwave-qiniu", "~> 0.0.8"
+gem "redactor-rails", "~> 0.4"
 #gem "markitup-rails"
 gem 'gon'
 #gem 'faye'

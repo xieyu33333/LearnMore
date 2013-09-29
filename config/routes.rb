@@ -1,5 +1,7 @@
 DataDownload::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
+
   # faye_server '/faye', :timeout => 25 do
   #   map '/message' => PushMessagesController
   #   map default: :block

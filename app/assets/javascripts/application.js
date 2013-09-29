@@ -15,6 +15,7 @@
 //= require_tree .
 //= require jquery.turbolinks
 //= require kindeditor
+//= require redactor-rails
 //= require turbolinks
 
 $(document).ready(function(){

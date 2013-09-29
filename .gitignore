@@ -15,6 +15,7 @@
 /tmp
 public/assets/
 public/uploads/
+public/system/
 vendor/bundle/
 .directory
 db/schema.rb

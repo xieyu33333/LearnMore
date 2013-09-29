@@ -1,32 +1,77 @@
-<%= form_for(@blog) do |f| %>
-  <% if @blog.errors.any? %>
-    <div class="alert alert-error">
-      <ul>
-      <% @blog.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div class="clear"></div>
+<ul id="editorTab" class="nav nav-tabs">
+    <li><a href="#neweditor" data-toggle="tab">简洁编辑器</a></li>
+    <li><a href="#kindeditor" data-toggle="tab">kindeditor</a></li>
+</ul>
+<div class="tab-content">
+  <div id="kindeditor" class="tab-pane">
+    <%= form_for(@blog) do |f| %>
+      <% if @blog.errors.any? %>
+        <div class="alert alert-error">
+          <ul>
+          <% @blog.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <table class="table table-bordered blog_title">
-    <tr>
-      <th><%= f.label :标题： ,:class => 'editblog'%></td>
-      <td><%= f.text_field :title, :class => 'blog_sort'%></td>
-      <th><%= f.label :分类： ,:class => 'editblog'%></td>
-      <td><%= f.text_field :blogtype ,:class => 'blog_sort'%></td>
-  </tr>
-  </table>
-  <% if params[:section_id]%>
-    <%= f.hidden_field :section_id, :value => params[:section_id] %>
-  <% end %>
-    <%= f.hidden_field :status, :value => 0 %>
-    <%= f.hidden_field :editer, :value => 0 %>
+      
+      <table class="table table-bordered blog_title">
+        <tr>
+          <th><%= f.label :标题： ,:class => 'editblog'%></td>
+          <td><%= f.text_field :title, :class => 'blog_sort'%></td>
+          <th><%= f.label :分类： ,:class => 'editblog'%></td>
+          <td><%= f.text_field :blogtype ,:class => 'blog_sort'%></td>
+      </tr>
+      </table>
+      <% if params[:section_id]%>
+        <%= f.hidden_field :section_id, :value => params[:section_id] %>
+      <% end %>
+        <%= f.hidden_field :status, :value => 0 %>
+        <%= f.hidden_field :editer, :value => 0 %>
 
-  <div class="field">
-    <%= f.kindeditor :artical , :class=>"blog_content" , :allowFileManager => false , :editor_id => 'my_editor' %>
+      <div class="field">
+        <%= f.kindeditor :artical , :class=>"blog_content" , :allowFileManager => false , :editor_id => 'my_editor',:width => 938, :height => 350 %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit :value => "发 布", :class => 'btn btn-primary'%>
+      </div>
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= f.submit :value => "发 布", :class => 'btn btn-primary'%>
+  <div id="neweditor" class="tab-pane">
+    <%= form_for(@blog) do |f| %>
+      <% if @blog.errors.any? %>
+        <div class="alert alert-error">
+          <ul>
+          <% @blog.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <table class="table table-bordered blog_title">
+        <tr>
+          <th><%= f.label :标题： ,:class => 'editblog'%></td>
+          <td><%= f.text_field :title, :class => 'blog_sort'%></td>
+          <th><%= f.label :分类： ,:class => 'editblog'%></td>
+          <td><%= f.text_field :blogtype ,:class => 'blog_sort'%></td>
+      </tr>
+      </table>
+      <% if params[:section_id]%>
+        <%= f.hidden_field :section_id, :value => params[:section_id] %>
+      <% end %>
+        <%= f.hidden_field :status, :value => 0 %>
+        <%= f.hidden_field :editer, :value => 0 %>
+
+      <div class="field">
+        <%= f.text_area :artical, :class => "redactor", :rows => 40, :cols => 120%>
+      </div>
+
+      <div class="actions">
+        <%= f.submit :value => "发 布", :class => 'btn btn-primary'%>
+      </div>
+    <% end%>
   </div>
-<% end %>
+</div>
