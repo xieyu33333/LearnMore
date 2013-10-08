@@ -24,6 +24,6 @@
   <b>上传者:</b>
   <%= @studyfile.user.username %>
 </p>
-
-<%= link_to '返 回', :back, :class => 'btn btn-primary' %>
+<%= link_to '编 辑', edit_studyfile_path(@studyfile.id) %>|
+<%= link_to '返 回', "/sections/#{@studyfile.section_id}" %>
 </div>
