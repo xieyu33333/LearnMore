@@ -12,6 +12,7 @@ $(document).ready(
       "fileUpload":"/redactor_rails/documents?" + params,
       "fileGetJson":"/redactor_rails/documents",
       "path":"/assets/redactor-rails",
+      "fullpage": true,
       "minHeight": 300,
       "css":"style.css"}
   );
