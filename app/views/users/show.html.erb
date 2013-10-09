@@ -9,25 +9,40 @@
 <p>
   <h4 class="main_username"><%= @user.username %></h4>
 </p>
-<p>
-  <b>Ta的文章</b></br>
-  <% @user.blog.each do |blog| %>
-    <li style="margin-left:10px"><%= link_to blog.title, blog %></li>
-  <% end %>
-</p>
-<p>
-  <b>Ta的收藏:</b></br>
-  <% @user.faverate.each do |faverate| %>
-    <li style="margin-left:10px"><%= link_to faverate.blog.title, faverate.blog if faverate.blog %></li>
-  <% end%>
-</p>
+<ul id="editorTab" class="nav nav-tabs">
+  <li><a href="#his_articals" data-toggle="tab">Ta的文章</a></li>
+  <li><a href="#his_sections" data-toggle="tab">Ta的版块</a></li>
+  <li><a href="#his_store" data-toggle="tab">Ta的收藏</a></li>
+</ul>
 
-<p>
-  <b>Ta的版块:</b></br>
-  <% @user.sections.each do |section| %>
-    <li style="margin-left:10px"><%= link_to section.name, section %></li>
-  <% end%>
-</p>
+<div class="tab-content">
+   <div id="his_sections" class="tab-pane">
+    <p>
+      <b>Ta的版块:</b></br>
+      <% @user.sections.each do |section| %>
+        <li style="margin-left:10px"><%= link_to section.name, section %></li>
+      <% end%>
+    </p>
+  </div>
 
+  <div id="his_articals" class="tab-pane">
+    <p>
+      <b>Ta的文章</b></br>
+      <% @blogs.each do |blog| %>
+        <li style="margin-left:10px"><%= link_to blog.title, blog %></li>
+      <% end %>
+      <%= paginate @blogs %>
+    </p>
+  </div>
+
+  <div id="his_store" class="tab-pane">
+    <p>
+      <b>Ta的收藏:</b></br>
+      <% @user.faverate.each do |faverate| %>
+        <li style="margin-left:10px"><%= link_to faverate.blog.title, faverate.blog if faverate.blog %></li>
+      <% end%>
+    </p>
+  </div>
+</div>
 <%= link_to '返 回', :back , :class=>'btn btn-primary'%>
 </div>
