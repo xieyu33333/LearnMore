@@ -305,6 +305,11 @@ input.blog_sort{
   float: left;
 }
 
+.redactor_editor, .redactor_editor:focus{
+	overflow: auto;
+	height:300px;
+}
+
 // #subitem{
 // 	display: none;
 // }
