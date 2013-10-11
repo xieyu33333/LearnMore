@@ -53,7 +53,7 @@ class StudyfilesController < ApplicationController
 
   def download
     @studyfile = Studyfile.find(params[:id])
-    send_file Rails.public_path+@studyfile.file_url.to_s,
+    send_data @studyfile.file_url.to_s,
               filename: "#{@studyfile.filename}"
   end
 
