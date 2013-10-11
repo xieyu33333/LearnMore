@@ -14,7 +14,9 @@
 <% if !@studyfile.file_url.blank? %>
 <p>
   <b>下载链接:</b>
-  <span data-no-turbolink><%= link_to @studyfile.filename, "/studyfiles/#{@studyfile.id}/download" %></span>
+  <span data-no-turbolink>
+  <a href= <%= "#{@studyfile.file_url.to_s}?download" %> target="_blank" data-bind="attr: {href: $data.url?$data.url() + '?download':''}"><%= @studyfile.filename %></a>
+  </span>
 </p>
 <% elsif @studyfile.outsite %>
   <%= @studyfile.outsite %>
