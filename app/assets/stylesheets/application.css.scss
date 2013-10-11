@@ -315,6 +315,17 @@ input.blog_sort{
 	width:400px;
 }
 
+.order_msg{
+	display: none;
+	position:fixed;
+	top:50px;
+	left:500px;
+	color:green;
+	padding:5px;
+  background: #72CA72;
+  @include border-radius(5px);
+}
+
 // #subitem{
 // 	display: none;
 // }

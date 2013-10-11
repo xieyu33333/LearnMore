@@ -33,5 +33,12 @@
       selector: "a[data-toggle=tooltip]"
     })
     $('#editorTab a:first').tab("show")
+    $(".order_form").ajaxForm(function() { 
+      $(".order_msg").text("排序修改成功!"); 
+      $(".order_msg").show();
+      setTimeout(function(){
+        $(".order_msg").empty().hide() 
+      },1500)
+    }); 
   })
 </script>
