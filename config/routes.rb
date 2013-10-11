@@ -16,7 +16,7 @@ DataDownload::Application.routes.draw do
       post "create_blog_comment"
     end
   end
-
+  
   resources :blogs do
     collection do
       put "change_classify"    
@@ -31,6 +31,7 @@ DataDownload::Application.routes.draw do
   resources :studyfiles do
     collection do
       get ":id/download", :to => 'studyfiles#download'
+      put "change_classify"
     end
   end
 
@@ -98,7 +99,13 @@ DataDownload::Application.routes.draw do
         post "change_item_order"
       end
     end
-    resources :studyfiles, :only => [:index, :destroy]
+    resources :studyfiles, :only => [:index, :destroy] do
+      collection do
+        get "order"
+        post "change_theme_order"
+        post "change_item_order"
+      end
+    end
     resources :topics, :only => [:index, :destroy]
     resources :comments, :only => [:index, :destroy]
     resources :forums

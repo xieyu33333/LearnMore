@@ -2,6 +2,7 @@
   <h3>文件管理</h3>
   <%= render "leftadmin"%>
   <div class="span9">
+    <div><%= link_to '添加新的文件或链接', new_section_studyfile_path, :class => "btn btn-primary" %></div></br>
     <table class="table">
       <tr>
         <th>资料名</th>
@@ -17,7 +18,7 @@
         <td><%= link_to studyfile.filename, studyfile %></td>
         <td><%= studyfile.filetype %></td>
         <% if studyfile.outsite%>
-        <td><%= link_to studyfile.filename, studyfile.outsite %></td>
+        <td><%= link_to studyfile.outsite[0..27], studyfile.outsite %></td>
         <% else%>
         <td></td>
         <% end %>
@@ -27,7 +28,5 @@
       </tr>
     <% end %>
     </table>
-    </br>
-    <%= link_to '添加新的文件或链接', new_section_studyfile_path, :class => "btn btn-primary" %>
   </div>
 </div>

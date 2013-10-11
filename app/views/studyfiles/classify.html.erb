@@ -1,1 +1,14 @@
-classify.html.erb
+<div class="container">
+  <%= render "leftadmin"%>
+  <div class="span7">
+    <h3>分类管理</h3>
+    <% @file_classify.each do |classify|%>
+      <%= form_tag({controller:"studyfiles", action:"change_classify"}, method:"put", :class => 'form-inline') do %>
+        <%= text_field_tag(:classify, classify) %>
+        <%= hidden_field_tag(:old_classify, classify)%>
+        <%= hidden_field_tag(:section, params[:section_id])%>
+        <input type="submit" value="提交" class="btn">
+      <% end %>
+    <% end %>
+  </div>
+</div>

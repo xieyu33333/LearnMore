@@ -76,4 +76,22 @@ class StudyfilesController < ApplicationController
       true
     end
   end
+
+  def order
+    @file = Studyfile.where(:section_id => params[:section_id]).order("sort")
+    @file_classify = @file.pluck(:filetype).uniq
+  end
+
+  def classify
+    @file = Studyfile.where(:section_id => params[:section_id]).order("sort")
+    @file_classify = @file.pluck(:filetype).uniq
+  end
+
+  def change_classify
+    @file = Studyfile.where(:section_id => params[:section])
+    @file.where(:filetype => params[:old_classify]).each do |file|
+      file.update_attribute(:filetype , params[:classify])
+    end
+    redirect_to :back
+  end
 end

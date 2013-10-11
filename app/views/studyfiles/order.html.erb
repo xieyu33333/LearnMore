@@ -1,1 +1,44 @@
-order.html.erb
+<div class="container">
+
+  <%= render "leftadmin"%>
+  <div class="span7">
+    <h3>排序管理</h3>
+    <table class="table">
+        <% if @file_classify %>
+          <% @file_classify.each do |classify| %>
+            <tr>
+              <td>
+                <h4 class = "red_head"><%= classify %></h4>
+              </td>
+              <td>
+                <form action="/admin/studyfiles/change_theme_order" method="post" class="order_form form-inline">
+                  <% typeorder = Studyfile.find_by_filetype(classify).sort/1000%>
+                  <%= text_field_tag(:big_value, typeorder, :class => "order_input")%>
+                  <%= hidden_field_tag(:classify, classify)%>
+                  <%= hidden_field_tag(:section, params[:section_id])%>
+                  <input type="submit" value="提交" class="btn btn-primary">
+                </form>
+              </td>
+            </tr>
+            <% @file.each do |file|%>
+              <% if file[:filetype] == classify %>
+                <tr class=<%= classify%> id="subitem">
+                  <td>
+                    <li style="margin-left:10px"><%= link_to file.filename, file %></li>
+                  </td>
+                  <td>
+                    <form action="/admin/studyfiles/change_item_order" method="post" class="order_form form-inline">
+                      <% typeorder = Studyfile.find_by_filetype(classify).sort/1000%>
+                      <%= text_field_tag(:small_value, file.sort-typeorder*1000, :class => "order_input")%>
+                      <%= hidden_field_tag(:id, file.id)%>
+                      <input type="submit" value="提交" class="btn">
+                    </form>
+                  </td>  
+                </tr>
+              <% end%>
+            <% end%>
+          <% end%>
+        <% end%>
+    </table>
+  </div>
+</div>
