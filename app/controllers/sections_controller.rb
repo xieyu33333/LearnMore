@@ -8,10 +8,10 @@ class SectionsController < ApplicationController
   def show
     @body_id = 'home'
     @section = Section.find(params[:id])
-    @file_classify = @section.studyfiles.pluck(:filetype).uniq
+    @file_classify = @section.studyfiles.order(:sort).pluck(:filetype).uniq
     @blog_classify = @section.blogs.order(:sort).pluck(:blogtype).uniq
     @blog = @section.blogs.order(:sort)
-    @file = @section.studyfiles
+    @file = @section.studyfiles.order(:sort)
     @user = @section.users.pluck(:id)
   end
 

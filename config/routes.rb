@@ -47,7 +47,14 @@ DataDownload::Application.routes.draw do
         get "classify"
       end
     end
-    resources :studyfiles
+
+    resources :studyfiles do
+      collection do
+        get "order"
+        get "classify"
+      end
+    end
+    
     resources :users
   end
 

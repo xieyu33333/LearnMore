@@ -12,41 +12,44 @@
   <% end %>
 
   <div class="field">
-    <%= f.label '命名' %><br />
+    <span>命名：</span>
     <%= f.text_field :filename, :id => 'file_name'%>
   </div>
 
   <div class="field">
-    <%= f.label '文档分类' %><br />
+    <span>分类：</span>
     <%= f.text_field :filetype%>
   </div>
 
   <div class="field">
-    <%= f.label '外部链接' %><br />
-    <%= f.text_field :outsite%> （填写链接地址）
+    <p>介绍：</p>
+    <%= f.text_area :description, :class => "description"%>
   </div>
 
-  <div class="field">
-    <%= f.label '介绍' %><br />
-    <%= f.text_area :description %>
+  <ul id="editorTab" class="nav nav-tabs">
+    <li><a href="#out_link" data-toggle="tab">添加外部链接</a></li>
+    <li><a href="#file_upload" data-toggle="tab">上传文件</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="out_link" class="tab-pane">
+      <%= f.text_field :outsite%> （填写链接地址）
+    </div>
+
+    <div id="file_upload" class="tab-pane">
+      <%= f.file_field :file_url, :id => 'file_uploader' %>
+    </div>
   </div>
 
   <% if params[:section_id]%>
     <%= f.hidden_field :section_id, :value => params[:section_id] %>
   <% end %>
 
-  <div class="field">
+<!--   <div class="field">
     <%= f.label '下载分数'%><br />
     <%= f.text_field :point %>
-  </div>
-
-  <p>
-    <label>上传</label>
-    <%= f.file_field :file_url, :id => 'file_uploader' %>
-  </p>
-
+  </div> -->
 
   <div class="actions">
-    <%= f.submit '提 交'%>
+    <%= f.submit '提 交', :class => "btn btn-primary"%>
   </div>
 <% end %>

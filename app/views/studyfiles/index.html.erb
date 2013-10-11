@@ -1,33 +1,33 @@
 <div class="container">
   <h3>文件管理</h3>
+  <%= render "leftadmin"%>
+  <div class="span9">
+    <table class="table">
+      <tr>
+        <th>资料名</th>
+        <th>资料分类</th>
+        <th>外链</th>
+        <th>上传者</th>
+        <th>分数</th>
+        <th></th>
+      </tr>
 
-  <table class="table">
-    <tr>
-      <th>资料名</th>
-      <th>资料分类</th>
-      <th>外链</th>
-      <th>上传者</th>
-      <th>分数</th>
-      <th></th>
-    </tr>
-
-  <% @studyfiles.each do |studyfile| %>
-    <tr>
-      <td><%= link_to studyfile.filename, studyfile %></td>
-      <td><%= studyfile.filetype %></td>
-      <% if studyfile.outsite%>
-      <td><%= link_to studyfile.filename, studyfile.outsite %></td>
-      <% else%>
-      <td></td>
-      <% end %>
-      <td><%= studyfile.user.username %></td>
-      <td><%= studyfile.point %></td>
-      <td><%= link_to '编辑', edit_studyfile_path(studyfile) %> | <%= link_to '删除', studyfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </table>
-
-  <br />
-
-  <%= link_to '后台编辑上传', new_section_studyfile_path %>
+    <% @studyfiles.each do |studyfile| %>
+      <tr>
+        <td><%= link_to studyfile.filename, studyfile %></td>
+        <td><%= studyfile.filetype %></td>
+        <% if studyfile.outsite%>
+        <td><%= link_to studyfile.filename, studyfile.outsite %></td>
+        <% else%>
+        <td></td>
+        <% end %>
+        <td><%= studyfile.user.username %></td>
+        <td><%= studyfile.point %></td>
+        <td><%= link_to '编辑', edit_studyfile_path(studyfile) %> | <%= link_to '删除', studyfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+    </br>
+    <%= link_to '添加新的文件或链接', new_section_studyfile_path, :class => "btn btn-primary" %>
+  </div>
 </div>
