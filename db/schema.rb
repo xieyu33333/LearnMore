@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130929095233) do
+ActiveRecord::Schema.define(:version => 20131014084134) do
 
   create_table "admins", :force => true do |t|
     t.string   "username",               :default => "", :null => false
@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(:version => 20130929095233) do
     t.integer  "editer",                              :default => 0
   end
 
+  add_index "blogs", ["blogtype"], :name => "index_blogs_on_blogtype"
+  add_index "blogs", ["section_id"], :name => "index_blogs_on_section_id"
+  add_index "blogs", ["sort"], :name => "index_blogs_on_sort"
+  add_index "blogs", ["status"], :name => "index_blogs_on_status"
+  add_index "blogs", ["user_id"], :name => "index_blogs_on_user_id"
+
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
@@ -83,6 +89,10 @@ ActiveRecord::Schema.define(:version => 20130929095233) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "faverates", ["blog_id"], :name => "index_faverates_on_blog_id"
+  add_index "faverates", ["studyfile_id"], :name => "index_faverates_on_studyfile_id"
+  add_index "faverates", ["user_id"], :name => "index_faverates_on_user_id"
 
   create_table "forums", :force => true do |t|
     t.string   "name"
@@ -158,6 +168,11 @@ ActiveRecord::Schema.define(:version => 20130929095233) do
     t.string   "outsite"
     t.integer  "sort",            :default => 100000
   end
+
+  add_index "studyfiles", ["filetype"], :name => "index_studyfiles_on_filetype"
+  add_index "studyfiles", ["section_id"], :name => "index_studyfiles_on_section_id"
+  add_index "studyfiles", ["sort"], :name => "index_studyfiles_on_sort"
+  add_index "studyfiles", ["user_id"], :name => "index_studyfiles_on_user_id"
 
   create_table "topics", :force => true do |t|
     t.string   "name"
