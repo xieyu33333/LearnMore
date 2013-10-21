@@ -13,4 +13,17 @@ describe Section do
   it "版块描述必填" do
     expect(build(:section, :description=>nil)).to have(1).errors_on(:description)
   end
+
+  it "pass?方法可用" do
+    expect(build(:section, :status=>0).pass?).to be_true
+  end
+
+  it "add_users(users)方法可用" do
+    @user = User.create(username: "xieyu",
+         email: "xieyu@126.com",
+         password: "1234567")
+    @section = build(:section)
+    @section.add_users(["xieyu"])
+    expect(@section.users[0].username).to eq "xieyu"
+  end
 end
