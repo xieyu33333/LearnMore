@@ -6,6 +6,7 @@ class SectionsController < ApplicationController
   end
 
   def show
+    fresh_when(:last_modified => Blog.last.created_at, :etag => Blog.last)
     @body_id = 'home'
     @section = Section.find(params[:id])
     @file_classify = @section.studyfiles.order(:sort).pluck(:filetype).uniq

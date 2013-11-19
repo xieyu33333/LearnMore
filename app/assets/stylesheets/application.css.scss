@@ -326,6 +326,12 @@ input.blog_sort{
   @include border-radius(5px);
 }
 
+.comment_user{
+	font-size: 13px;
+	color:#888;
+	font-weight: bold;
+}
+
 // #subitem{
 // 	display: none;
 // }

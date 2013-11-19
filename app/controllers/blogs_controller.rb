@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   before_filter :section_mumber?, only: [:index, :new, :create]
   layout "application", only: [:index, :order, :classify]
   def index
+    fresh_when(:last_modified => Blog.last.created_at, :etag => Blog.last)
     @blogs = Blog.find_all_by_section_id(params[:section_id])
   end
 

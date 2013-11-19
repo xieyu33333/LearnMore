@@ -46,7 +46,12 @@
 				<% @comments.each do |comment|%>
 				  <div class='comment_box'>
               <%= image_tag gravatar_for(comment.user), :class => 'span1', :alt => comment.user.username%>
-					  <p class="span6"><%= sanitize comment.comment %></p>
+					  <div class="span6">
+					  	<div style="padding-bottom:10px">
+					  	  <%=link_to comment.user.username, comment.user, :class=>"comment_user" %>
+					    </div>
+					    <p><%= sanitize comment.comment %></p>
+					  </div>
 				  </div>
 				<% end %>
 		  </div>
