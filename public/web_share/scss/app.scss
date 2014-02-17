@@ -1,0 +1,83 @@
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switch",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+.left-off-canvas-menu{
+  min-height:550px;
+}
+
+.right-off-canvas-menu{
+  min-height:180px;
+}
+
+ul.off-canvas-list li{
+  background-color: #333;
+}
+
+.pricing-table .bullet-item{
+  // text-align: inherit;
+  position: relative;
+}
+
+.index-th{
+  height:150px;
+  width:200px;
+}
+a.index-link{
+  width:200px;
+  display: block;
+  position: relative;
+  margin:auto;
+}
+span.index-title{
+  position: absolute;
+  background: #000;
+  opacity: 0.7;
+  padding: 4px 10px;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  font-size: 1.16em;
+  width: 200px;
+  font-weight: 700;
+  line-height: 20px;
+  filter: alpha(opacity=70);
+  -moz-opacity: 0.70;
+  opacity: 0.70;
+}
