@@ -25,13 +25,13 @@ $(document).ready(function(){
   //     });
   //   }
   // });
-  $.getJSON('modal/index.json',function(){
+  $.getJSON('modal/index.json', function(result){
     $.each(result.data.list,function(k, v){
       $(".pricing-table").prepend("<li class='bullet-item'><a class='index-link'><img class='index-th' src="+v.thumb+"><span class='index-title' href='#'>"+v.title+"</span></a></li>");
     });
   })
 
-  $.getJSON('modal/tags.json',function(){
+  $.getJSON('modal/tags.json', function(result){
     $.each(result.data,function(k, v){
       $(".left-off-canvas-menu .off-canvas-list").append("<li><a href='#'>"+v.name+"</a></li>");
     });
