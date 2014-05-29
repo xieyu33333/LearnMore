@@ -10,7 +10,7 @@ development:
   database: data_download
   pool: 5
   username: root
-  password: x890520
+  password: root
   host: localhost
 
 # Warning: The database defined as "test" will be erased and

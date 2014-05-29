@@ -63,7 +63,7 @@ end
 
 # To use debugger
 # gem 'debugger'
-gem 'mysql2'
+gem 'mysql2', '0.3.14'
 gem 'grape'
 gem 'grape-entity'
 gem 'cancan'
@@ -98,4 +98,5 @@ gem 'gon'
 gem 'rufus-scheduler'   #计划任务
 gem 'turbolinks'
 gem 'jquery-turbolinks'
+gem 'newrelic_rpm'
 #gem 'cologger'
